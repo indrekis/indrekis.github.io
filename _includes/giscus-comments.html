@@ -1,0 +1,33 @@
+{% if page.comments != false and jekyll.environment == "production" %}
+  <div class="page-comments">
+    <div id="giscus_thread"></div>
+<script>
+  'use strict';
+
+  (function () {
+    var commentContainer = document.querySelector('#giscus-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', '{{ site.comments.giscus.repo | downcase }}');
+    script.setAttribute('data-repo-id', '{{ site.comments.giscus.repo_id }}');
+    script.setAttribute('data-category', '{{ site.comments.giscus.category }}');
+    script.setAttribute('data-category-id', '{{ site.comments.giscus.category_id }}');
+    script.setAttribute('data-mapping', '{{ site.comments.giscus.discussion_term | default: "pathname" }}');
+    script.setAttribute('data-strict', '{{ site.comments.giscus.strict | default: 1 }}');
+    script.setAttribute('data-input-position', '{{ site.comments.giscus.input_position | default: "bottom" }}');
+    script.setAttribute('data-reactions-enabled', '{{ site.comments.giscus.reactions_enabled | default: 1 }}');
+    script.setAttribute('data-theme', '{{ site.comments.giscus.theme | default: "light" }}');
+    script.setAttribute('data-lang', '{{ site.comments.giscus.lang | default: "uk" }}');
+    script.setAttribute('crossorigin', 'anonymous');
+	
+    commentContainer.appendChild(script);
+  })();
+</script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+{% endif %}

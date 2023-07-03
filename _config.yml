@@ -53,3 +53,39 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# https://fontawesome.com/icons
+footer_links:
+  - title: Home
+    url: /
+    icon: fa fa-home
+
+author:
+  name: Indrekis
+  # picture: /images/johndoe.png
+  links:
+    - title: GitHub
+      url: https://github.com/indrekis
+      icon: fab fa-github-square    
+    
+google_analytics: G-QW8VYN030P
+search_full_content: true
+
+comments:
+    provider: giscus 
+    # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
+
+    giscus:
+        repo                 : indrekis/indrekis.github.io.comments
+        repo_id              : R_kgDOJ22ekg 
+        category             : Announcements
+        category_id          : DIC_kwDOJ22eks4CXonf
+        discussion_term      : pathname
+        reactions_enabled    : 1
+        theme                : preferred_color_scheme    
+    
+mathjax:
+  enable: true             # MathJax equations, e.g. true, false (default)
+  combo: "tex-svg"         # "tex-svg" (default), "tex-mml-chtml", etc.
+  tags: "ams"              # "none", "ams" (default), "all"
+  

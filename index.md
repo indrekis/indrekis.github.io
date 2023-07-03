@@ -4,3 +4,6 @@
 
 layout: home
 ---
+
+[retrocomputing](retrocomputing)
+[cpm](retrocomputing/cpm/contents1.md)
