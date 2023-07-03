@@ -72,9 +72,10 @@ google_analytics: G-QW8VYN030P
 search_full_content: true
 
 comments:
-    provider: giscus 
+    provider: disqus 
     # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
-
+    disqus:
+        shortname            : indrekis
     giscus:
         repo                 : indrekis/indrekis.github.io.comments
         repo_id              : R_kgDOJ22ekg 
