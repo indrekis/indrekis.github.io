@@ -30,18 +30,14 @@ layout: default
           {% include social-share.html %}
         {% endif %}
 
-
-		{% if site.comments.provider  %} 
-		{% case site.comments.provider %}
-		{% when "disqus" %}
-			{% include disqus-comments.html %}
-		{% when "giscus" %}
-			{% include giscus-comments.html %}
-		{% endcase %}
-		{% endif %}
+        {% if site.disqus.shortname %}
+          {% include disqus-comments.html %}
+        {% endif %}
 
         {% include page-pagination.html %}
       </div>
     </div>
   </article>
+  
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </main>

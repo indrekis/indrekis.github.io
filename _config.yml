@@ -62,7 +62,7 @@ footer_links:
 
 author:
   name: Indrekis
-  # picture: /images/johndoe.png
+  picture: /images/indrekis_1.jpg
   links:
     - title: GitHub
       url: https://github.com/indrekis
@@ -70,6 +70,9 @@ author:
     
 google_analytics: G-QW8VYN030P
 search_full_content: true
+
+disqus:
+    shortname            : indrekis
 
 comments:
     provider: disqus 
@@ -90,3 +93,5 @@ mathjax:
   combo: "tex-svg"         # "tex-svg" (default), "tex-mml-chtml", etc.
   tags: "ams"              # "none", "ams" (default), "all"
   
+kramdown:
+  input: GFM
