@@ -8,6 +8,6 @@ title: " "
 
 # Розділи
 
-[Retrocomputing](retrocomputing)
+[Retrocomputing](retrocomputing/_posts/2023-07-13-index.md)
 
 # Пости
