@@ -95,3 +95,7 @@ mathjax:
   
 kramdown:
   input: GFM
+  # parse_block_html: true
+
+# markdown: CommonMarkGhPages
+# markdown: kramdown

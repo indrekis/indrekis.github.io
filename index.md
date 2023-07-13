@@ -6,3 +6,8 @@ layout: home
 title: " "
 ---
 
+# Розділи
+
+[Retrocomputing](retrocomputing)
+
+# Пости
