@@ -1,25 +1,12 @@
 ---
 layout: post
-title:  "Емулятори CP/M систем"
+title:  "RunCPM -- емулятор узагальненої CP/M-системи"
 date:   2023-07-14 7:23:45 +0300
 tags: [CP/M, retrocomputing]
 categories: [retrocomputing, CP/M]
 comments: true
 excerpt_separator: <!--more-->
 ---
-
-- [RunCPM](#runcpm)
-- [MAME](#mame)
-  - [Робота із образами дисків](#робота-із-образами-дисків)
-  - [Інша діагностика емулятора](#інша-діагностика-емулятора)
-    - [Назви дисплеїв](#назви-дисплеїв)
-    - [Інше](#інше)
-  - [Клавіатура](#клавіатура)
-  - [Шум дисководу](#шум-дисководу)
-- [Інші](#інші)
-  - [MyZ80](#myz80)
-  - [Емулятор Altair32](#емулятор-altair32)
-- [Виноски](#виноски)
 
 
 # RunCPM
@@ -52,7 +39,7 @@ excerpt_separator: <!--more-->
 <!-- додати лінк на пост про нього -->
 
 Підтримує кілька варіантів [CCP](https://en.wikipedia.org/wiki/CP/M#Console_Command_Processor) -- командних інтерпретаторів, включаючи ZCP -- вибір здійснюється під час компіляції, за допомогою файлу globals.h:
-```
+```C
 /* Definition of which CCP to use (must define only one) */
 #define CCP_INTERNAL // If this is defined, an internal CCP will emulated
 //#define CCP_DR
@@ -63,7 +50,7 @@ excerpt_separator: <!--more-->
 ```
 
 Там також можна включити підтримку LUA:
-```
+```C
 #define HASLUA	
 ```
 
@@ -71,11 +58,11 @@ excerpt_separator: <!--more-->
 
 Компілював під Windows з використанням MSYS2/MinGW64:
 
-'''
+```bash
 $ git clone https://github.com/MockbaTheBorg/RunCPM
 $ cd RunCPM
 $ make mingw build 
-'''
+```
 Отриманий RunCPM.exe можна скопіювати, куди зручно -- від DLL MinGW64 він не залежить. 
 
 Далі потрібно у тій директорії створити директорії A, B тощо -- скільки потрібно. В A/0 -- розархівувати вміст RunCPM/DISK/A.ZIP, і можна запускати. Виглядає це так: 
