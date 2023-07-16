@@ -67,6 +67,13 @@ author:
     - title: GitHub
       url: https://github.com/indrekis
       icon: fab fa-github-square    
+    - title: Facebook
+      url: https://www.facebook.com/indrekis
+      icon: fab fa-facebook-square
+    - title: LinkedIn
+      url: https://www.linkedin.com/in/oleg-farenyuk-9625951b/
+      icon: fab fa-linkedin
+  email: indrekis@gmail.com
     
 google_analytics: G-ZCFLVJJ186
 search_full_content: true
