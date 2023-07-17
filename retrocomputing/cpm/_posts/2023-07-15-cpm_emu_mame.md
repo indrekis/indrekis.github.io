@@ -24,9 +24,11 @@ excerpt_separator: <!--more-->
 
 <style>body {text-align: justify}</style>
 
-Osborne 1 підтримується нормально. Osborne Executive помічено як такий, що не працює, але, хоча у нього є свої проблеми, в цілому -- використовувати можна. [Osborne Vixen](https://en.wikipedia.org/wiki/Osborne_Vixen) теж підтримується, хоча ретельно не тестував. 
+Osborne 1 підтримується нормально. Osborne Executive помічено як такий, що не працює, але, хоча у нього є свої проблеми[^0], в цілому -- використовувати можна. [Osborne Vixen](https://en.wikipedia.org/wiki/Osborne_Vixen) теж підтримується, хоча ретельно не тестував. 
 
 <!--more-->
+
+[^0]: Неприємна проблема для Executive -- він майже завжди  не зауважує, що образ диску замінили. (Дуже рідко -- зауважує, але поки не знаю, коли це спрацьовує).
 
 Дистрибутив MAME не включає ROM та інші потенційно пропрієтарні модулі[^3]. Вміст EPROM Osborne-ів знайшов майже чудом, через кілька днів пошуків, на якихось дивний сайтах. Щоб ви не мусили повторювати цей процес -- викладаю їх тут: [osbexec](/retrocomputing/cpm/files/MAME/osbexec.zip), [osborne1](/retrocomputing/cpm/files/MAME/osborne1.zip), [osborne1nv](/retrocomputing/cpm/files/MAME/osborne1nv.zip), [vixen](/retrocomputing/cpm/files/MAME/vixen.zip). 
 
