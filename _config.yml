@@ -33,6 +33,10 @@ github_username:  indrekis
 remote_theme: "mmistakes/so-simple-theme@3.2.0"
 plugins:
   - jekyll-feed
+  - jekyll-paginate
+
+paginate: 10  # amount of posts to show per page
+paginate_path: /page:num/
 
 # Exclude from processing.
 # The following items will not be processed, by default.
