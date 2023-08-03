@@ -82,7 +82,7 @@ excerpt_separator: <!--more-->
 |Intel Inboard 386/PC та CPU шлейф. Взято [тут](https://twitter.com/foone/status/1171983889419497473).|
 
 
-|![](/retrocomputing/ibm_pc_compat/pics/upd_brd/InBoard386_at.png)|
+|![](/retrocomputing/ibm_pc_compat/pics/upd_brd/InBoard386_at.jpg)|
 |:--------------------:|
 |Intel Inboard 386/AT та CPU шлейф. Взято [тут](https://www.reddit.com/r/retrobattlestations/comments/hqpfxd/intel_inboard_386_collection_also_looking_to_buy/).
 
@@ -186,6 +186,7 @@ All Charge Card від тієї ж ALL Computers. Це плата -- [MMU](https
 - Розділ [Manuals на minuszerodegrees](http://minuszerodegrees.net/manuals.htm) містить багато інструкцій до таких плат.
 - Стаття PC Mag "Accelerator boards: power for a price", Charles Petzold ([1986-09-16, стор. 128-165](https://retrocmp.de/hardware/pc-elevator-286/PC-Mag-1986-09-16.pdf)).
 - [The Secret History of Microsoft Hardware](https://www.pcmag.com/news/the-secret-history-of-microsoft-hardware), зокрема -- описує Mach 10 Accelerator board для XT, із 8086 9.54MHz -- на фоні плат вище, не вражає, та Mach 20 із 8-MHz 80286 CPU і слотом для 80287, кажуть навіть OS/2 можна було з її допомогою на XT запускати. Огляд [Mach 10](https://books.google.com.ua/books?id=oDwEAAAAMBAJ&pg=PA63&dq=%22microsoft%22+%22windows%22&hl=uk&sa=X&ved=2ahUKEwiT8PSIkKH1AhWE66QKHZg1Cx0Q6AF6BAgDEAI#v=onepage&q=%22microsoft%22%20%22windows%22&f=false) від InfoWorld, 6 Oct. 1986, стор. 63-64.
+- "[Triton Turbo XT](http://www.mainbyte.com/ti99/hardware/triton_turbo/turbo.html)" -- дивний клон XT, який називався апдейтом для [TI-99](https://en.wikipedia.org/wiki/TI-99/4A), а фактично [використовував його як клавіатуру](https://dfarq.homeip.net/triton-turbo-xt/).
 
 # Виноски
 
