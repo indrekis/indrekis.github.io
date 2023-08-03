@@ -1,0 +1,263 @@
+
+
+For 3 versions of the Rampage!
+
+Rampage!      AST Part Number 202073-001
+Rampage!      AST Part Number 202073-002
+Rampage!      AST Part Number 202141-001
+
+
+==============================================================================
+
+Rampage!                                            AST Part Number 202073-001
+
+The Rampage is a memory enhancement board designed for use with the IBM PC,
+XT, and 100% compatibles running at a speed of 4.77MHz.  The Rampage can be
+populated from 256K to 2048K using industry standard 256K DRAM chips of at
+least 150ns speed.  The memory standards supported by the Rampage include
+conventional (640K base), LIM 3.2, EEMS, and LIM 4.0.  Extended memory can be
+emulated by using the REX.SYS device driver.  In order to access any
+non-coventional memory, the REMM.SYS device driver must be used.
+
+
+SWITCH SETTINGS
+
+    BASE I/O ADDRESS
+
+               208  218  258  268  2A8  2B8  2E8
+               ---  ---  ---  ---  ---  ---  ---
+        SW1     ON   ON   ON   ON  OFF  OFF  OFF
+        SW2     ON   ON  OFF  OFF   ON   ON  OFF
+        SW3     ON   ON   ON  OFF  OFF  OFF  OFF
+        SW4     ON  OFF  OFF   ON   ON  OFF   ON
+
+    STARTING ADDRESS
+
+                0K   256K  512K  640K
+               ----  ----  ----  ----
+        SW5    OFF    ON   OFF    ON
+        SW6    OFF   OFF    ON    ON
+
+
+    BANKS AVAILABLE AS BASE (640K) MEMORY
+
+        BANK   0        1        2        3
+
+                        UP TO    UP TO    UP TO
+                0K      256K     512K     768K *
+               -----    -----    -----    -----
+        SW7     ON       OFF       ON      OFF
+        SW8     ON        ON      OFF      OFF
+
+        NOTE: The maximum amount of conventional memory in an IBM PC/XT is
+              640K.  SW7 & SW8 define the amount of conventional memory
+              available to the PC from the Rampage board.  In some cases, the
+              total of existing PC memory and Rampage conventional memory may
+              add up to more than 640K.  In this situation, conventional memory
+              stops at 640K and the balance becomes available as expanded
+              memory.
+
+
+JUMPER SETTINGS
+
+    The only user-configurable jumpers on the Rampage are the three pin jumper
+    labeled "E1-E2-E3" and the two pin jumper at "E8-E9".  By attaching E1-E2,
+    Dual Page Mode is disabled, allowing only one set of mapping registers for
+    expanded memory.  Attaching E2-E3 enables Dual Page Mode, allowing two
+    mapping registers.  AST recommends two mapping registers, as they are
+    useful for multitasking purposes.
+
+    Attaching E8-E9 enables parity checking.  It is strongly recommended that
+    parity checking is always enabled.
+
+
+SWITCH BANK AND JUMPER LOCATIONS
+
+    +---------------------------------------------------------------+
+    |                                       +-------+               | +---
+    |                                       |       |          * E8 +-+
+    |                                       +-------+          * E9 | |
+    |                                       SW1                     | |
+    |                                                   ***         | |
+    |                                                   EEE         | |
+    |                                                   123         | |
+    |                                                               | |
+    |                                                               | |
+    |                                                               +-+
+    +---------------------------------------------+            +----+ |
+                                                  +------------+      |
+
+
+==============================================================================
+
+Rampage!                                            AST Part Number 202073-002
+
+The Rampage is a memory enhancement board designed for use with the IBM PC,
+XT, and 100% compatibles running at a speed of 4.77MHz.  The Rampage can be
+populated from 256K to 2048K using industry standard 256K DRAM chips of at
+least 150ns speed.  The memory standards supported by the Rampage include
+conventional (640K base), LIM 3.2, EEMS, and LIM 4.0.  Extended memory can be
+emulated by using the REX.SYS device driver.  In order to access any
+non-coventional memory, the REMM.SYS device driver must be used.
+
+
+SWITCH SETTINGS
+
+    (SW1 has eight switches; SW2 has four switches)
+
+    BASE I/O ADDRESS
+
+               208  218  258  268  2A8  2B8  2E8
+               ---  ---  ---  ---  ---  ---  ---
+        SW1-1   ON   ON   ON   ON  OFF  OFF  OFF
+        SW1-2   ON   ON  OFF  OFF   ON   ON  OFF
+        SW1-3   ON   ON   ON  OFF  OFF  OFF  OFF
+        SW1-4   ON  OFF  OFF   ON   ON  OFF   ON
+
+
+    BANKS AVAILABLE AS BASE (640K) MEMORY
+
+        BANK     0       1       2       3
+
+                       UP TO   UP TO   UP TO
+                 0K     256K    512K    768K *
+                -----  -----   -----   -----
+        SW1-5     ON    OFF      ON     OFF
+        SW1-6     ON     ON     OFF     OFF
+
+        NOTE: The maximum amount of conventional memory in an IBM PC/XT is
+              640K.  SW1-5 & SW1-6 define the amount of conventional memory
+              available to the PC from the Rampage board.  In some cases, the
+              total of existing PC memory and Rampage conventional memory may
+              add up to more than 640K.  In this situation, conventional memory
+              stops at 640K and the balance becomes available as expanded
+              memory.
+
+        SW1-7  Dual page mode enable - Recommend "on" at all times
+
+        SW1-8  Parity check enable - Recommend "on" at all times
+
+
+    STARTING ADDRESS
+
+              SW2-1  SW2-2  SW2-2  SW2-4
+              -----  -----  -----  -----
+          0K   OFF    OFF    OFF    OFF
+         64K    ON    OFF    OFF    OFF
+        128K   OFF     ON    OFF    OFF
+        192K    ON     ON    OFF    OFF
+        256K   OFF    OFF     ON    OFF
+        320K    ON    OFF     ON    OFF
+        384K   OFF     ON     ON    OFF
+        448K    ON     ON     ON    OFF
+        512K   OFF    OFF    OFF     ON
+        576K    ON    OFF    OFF     ON
+        640K   OFF     ON    OFF     ON
+
+
+SWITCH BANK LOCATIONS
+
+    +---------------------------------------------------------------+
+    |                                       +-------+ +----+        | +---
+    |                                       |       | |    |        +-+
+    |                                       +-------+ +----+        | |
+    |                                       SW1       SW2           | |
+    |                                                               | |
+    |                                                               | |
+    |                                                               | |
+    |                                                               | |
+    |                                                               | |
+    |                                                               +-+
+    +---------------------------------------------+            +----+ |
+                                                  +------------+      |
+
+
+==============================================================================
+
+Rampage!                                            AST Part Number 202141-001
+
+The Rampage is a memory enhancement board designed for use with the IBM PC,
+XT, and 100% compatibles running at a speed of 4.77MHz.  The Rampage can be
+populated from 256K to 2048K using industry standard 256K DRAM chips of at
+least 150ns speed.  The memory standards supported by the Rampage include
+conventional (640K base), LIM 3.2, EEMS, and LIM 4.0.  Extended memory can be
+emulated by using the REX.SYS device driver.  In order to access any
+non-coventional memory, the REMM.SYS device driver must be used.
+
+
+SWITCH SETTINGS
+
+    STARTING ADDRESS
+
+              SW1-1   SW1-2   SW1-3   SW1-4
+              -----   -----   -----   -----
+          0K   OFF     OFF     OFF     OFF
+         64K    ON     OFF     OFF     OFF
+        128K   OFF      ON     OFF     OFF
+        192K    ON      ON     OFF     OFF
+        256K   OFF     OFF      ON     OFF
+        320K    ON     OFF      ON     OFF
+        384K   OFF      ON      ON     OFF
+        448K    ON      ON      ON     OFF
+        512K   OFF     OFF     OFF      ON
+        576K    ON     OFF     OFF      ON
+        640K   OFF      ON     OFF      ON
+
+
+    TYPE OF RAM INSTALLED
+
+        BANK 0  BANK 1    SW1-5  SW1-6  SW1-7
+        ------  ------    -----  -----  -----
+          64K     64K   |   ON     ON    OFF
+          64K    256K   |   ON    OFF    OFF
+         256K    256K   |  OFF    OFF    OFF
+
+        NOTE: The Rampage requires 256K DRAM memory chips in all of it's banks
+              with the exception of banks zero and one.  As shown above, 64K
+              DRAMS may be used in these two banks if the switches are set
+              correctly.
+
+        SW1-8 - PARITY CHECK (recommended ON at all times)
+
+
+    BASE I/O ADDRESS
+
+               208  218  258  268  2A8  2B8  2E8
+               ---  ---  ---  ---  ---  ---  ---
+        SW2-1   ON  OFF  OFF   ON   ON  OFF   ON
+        SW2-2   ON   ON   ON  OFF  OFF  OFF  OFF
+        SW2-3   ON   ON  OFF  OFF   ON   ON  OFF
+        SW2-4   ON   ON   ON   ON  OFF  OFF  OFF
+
+
+    RAMPAGE MEMORY AVAILABLE AS COVENTIONAL (Base 640K)
+
+                 0K    64K  128K  192K  256K  320K  384K  448K  512K  576K
+                ----  ----  ----  ----  ----  ----  ----  ----  ----  ----
+        SW2-5   OFF    ON   OFF    ON   OFF    ON   OFF    ON   OFF    ON
+        SW2-6   OFF    ON    ON   OFF   OFF    ON    ON   OFF   OFF    ON
+        SW2-7   OFF    ON    ON    ON    ON   OFF   OFF   OFF   OFF    ON
+        SW2-8   OFF    ON    ON    ON    ON    ON    ON    ON    ON   OFF
+
+
+SWITCH BANK LOCATIONS
+
+    +---------------------------------------------------------------+
+    |                                       +-------+ +-------+     | +---
+    |                                       |       | |       |     +-+
+    |                                       +-------+ +-------+     | |
+    |                                       SW1       SW2           | |
+    |                                                               | |
+    |                                                               | |
+    |                                                               | |
+    |                                                               | |
+    |                                                               | |
+    |                                                               +-+
+    +---------------------------------------------+            +----+ |
+                                                  +------------+      |
+                                                                      |
+
+==============================================================================
+
+
+

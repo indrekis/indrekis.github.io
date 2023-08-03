@@ -1,0 +1,161 @@
+
+Rampage AT                                          AST Part Number 202079-001
+
+The Rampage AT is a memory expansion adapter for the IBM PC/AT and 100%
+compatibles running at *6MHz.  Memory can be expanded on this board from 512K
+to 2048K using industry standard 256K dynamic RAM chips with a minimum speed
+requirement of 120NS.  Memory standards supported by the Rampage AT include
+conventional (base 640K), linear extended, LIM 3.2, LIM 4.0, and EEMS.
+
+    * Later versions of the Rampage AT are rated for 8MHz operation.
+      The part number on the solder (non-component) side of the board
+      determines which revision you have.  If the part number is
+      202079-302C or 202079-302D, the Rampage is rated for 8MHz
+      operation. Any other revision is rated for 6MHz only.
+
+
+SWITCH SETTINGS
+
+    SWITCH BLOCK 1 (TEN POSITIONS; ON = TOWARD NUMBERS)
+
+        RAMPAGE MEMORY DEDICATED TO LINEAR / NON-EXPANDED MEMORY
+
+        LINEAR
+        MEMORY   SW1-1  SW1-2  SW1-3  SW1-4
+        ------   -----  -----  -----  -----
+        *128K      ON     ON     ON     ON (Default Setting)
+         256K      ON     ON     ON    OFF
+         384K      ON     ON    OFF     ON
+         512K      ON     ON    OFF    OFF
+         640K      ON    OFF     ON     ON
+         768K      ON    OFF     ON    OFF
+         896K      ON    OFF    OFF     ON
+        1024K      ON    OFF    OFF    OFF
+        1152K     OFF     ON     ON     ON
+        1280K     OFF     ON     ON    OFF
+        1408K     OFF     ON    OFF     ON
+        1536K     OFF     ON    OFF    OFF
+        1664K     OFF    OFF     ON     ON
+        1792K     OFF    OFF     ON    OFF
+        1920K     OFF    OFF    OFF     ON
+        2048K     OFF    OFF    OFF    OFF
+
+        NOTE: The above settings define how much of the memory on the Rampage
+              will be used as conventional (base 640K) and/or extended linear
+              memory.  Any memory not used by these settings will be available
+              as EMS expanded memory.
+
+              If the Rampage is to be used exclusively as EMS expanded memory,
+              set the switches on Bank 2 (below) accordingly, and the above
+              settings will be ignored.
+
+
+    BASE I/O ADDRESS
+
+        ADDRESS SW1-5  SW1-6  SW1-7  SW1-8
+        ------- -----  -----  -----  -----
+         0208h    ON     ON     ON     ON
+        *0218h    ON     ON     ON    OFF  (Default Setting)
+         0258h    ON    OFF     ON    OFF
+         0268h    ON    OFF    OFF     ON
+         02A8h   OFF     ON    OFF     ON
+         02B8h   OFF     ON    OFF    OFF
+         02E8h   OFF    OFF    OFF     ON
+
+    DUAL PAGE MODE
+
+        SW1-9     ON=ENABLED     OFF=DISABLED
+
+            NOTE: Dual page mode allows expanded memory to maintain two sets
+                  of mapping registers, which ensures proper multitasking
+                  operation.  Generally, dual page mode is enabled. (SW1-9 ON)
+
+        SW1-10   N/A  ("unused and should be left on" according to AST Research Technical Bulletin TB-0144)
+
+
+    SWITCH BLOCK 2 - (EIGHT POSITIONS; ON = TOWARD NUMBERS)
+
+        STARTING ADDRESS (LINEAR MEMORY INSTALLED PREVIOUS TO RAMPAGE)
+
+        START ADDRESS  SW1  SW2  SW3  SW4  SW5  SW6  SW7
+        -------------  ---  ---  ---  ---  ---  ---  ---
+            0K          ON   ON   ON   ON   ON   ON   ON
+          128K          ON   ON   ON   ON   ON   ON  OFF
+          256K          ON   ON   ON   ON   ON  OFF   ON
+          384K          ON   ON   ON   ON   ON  OFF  OFF
+         *512K          ON   ON   ON   ON  OFF   ON   ON (Default Setting)
+          640K          ON   ON   ON   ON  OFF   ON  OFF
+          768K          ON   ON   ON   ON  OFF  OFF   ON
+          896K          ON   ON   ON   ON  OFF  OFF  OFF
+         1024K          ON   ON   ON  OFF   ON   ON   ON
+         1152K          ON   ON   ON  OFF   ON   ON  OFF
+         1280K          ON   ON   ON  OFF   ON  OFF   ON
+         1408K          ON   ON   ON  OFF   ON  OFF  OFF
+         1536K          ON   ON   ON  OFF  OFF   ON   ON
+         1664K          ON   ON   ON  OFF  OFF   ON  OFF
+         1792K          ON   ON   ON  OFF  OFF  OFF   ON
+         1920K          ON   ON   ON  OFF  OFF  OFF  OFF
+         2048K          ON   ON  OFF   ON   ON   ON   ON
+         2176K          ON   ON  OFF   ON   ON   ON  OFF
+         2304K          ON   ON  OFF   ON   ON  OFF   ON
+         2432K          ON   ON  OFF   ON   ON  OFF  OFF
+         2560K          ON   ON  OFF   ON  OFF   ON   ON
+         2688K          ON   ON  OFF   ON  OFF   ON  OFF
+         2816K          ON   ON  OFF   ON  OFF  OFF   ON
+         2944K          ON   ON  OFF   ON  OFF  OFF  OFF
+         3072K          ON   ON  OFF   ON   ON   ON   ON
+         4096K  (4MB)   ON  OFF   ON   ON   ON   ON   ON
+         5120K  (5MB)   ON  OFF   ON  OFF   ON   ON   ON
+         6144K  (6MB)   ON  OFF  OFF   ON   ON   ON   ON
+         7168K  (7MB)   ON  OFF  OFF  OFF   ON   ON   ON
+         8192K  (8MB)  OFF   ON   ON   ON   ON   ON   ON
+         9216K  (9MB)  OFF   ON   ON  OFF   ON   ON   ON
+        10240K (10MB)  OFF   ON  OFF   ON   ON   ON   ON
+        11264K (11MB)  OFF   ON  OFF  OFF   ON   ON   ON
+        12288K (12MB)  OFF  OFF   ON   ON   ON   ON   ON
+        13312K (13MB)  OFF  OFF   ON  OFF   ON   ON   ON
+        14336K (14MB)  OFF  OFF  OFF   ON   ON   ON   ON
+        15360K (15MB)  OFF  OFF  OFF  OFF   ON   ON   ON
+
+        ALL RAMPAGE    OFF  OFF  OFF  OFF  OFF  OFF  OFF
+        MEMORY PAGED  (EMS)
+
+
+        SW2-8 - Memory Parity Checking
+
+        The above list of addresses is not complete.  After the 3072K
+        address, we have listed the settings for every megabyte only.
+        Switches 5,6 & 7 determine the addresses between.  If you are
+        unable to extrapolate the correct starting address from the above
+        information, contact AST to order the complete documentation.
+
+        NOTE: Linear memory installed previous to the Rampge would consist of
+              Base memory (maximum 640K) plus extended memory (non-EMS)
+              installed in the system before the Rampage is installed.  If the
+              starting address is set below 640K, the Rampage will
+              automatically "backfill" base memory up to 640K, with the
+              remainder of linear memory going to extended memory.
+
+              You will have to adjust your machines CMOS with your set-up
+              program only if you add conventional or extended linear memory
+              with the Rampage AT.  Do not change the set-up to reflect
+              expanded EMS memory.
+
+
+SWITCH BLOCK LOCATIONS
+
+    +---------------------------------------------------------------+
+    |                                      |SW1    | |SW2  |        | +---
+    |                                      +-------+ +-----+        +-+
+    |                                                               | |
+    |                                                               | |
+    |                                                               | |
+    |                                                               | |
+    |                                                               | |
+    |                                                               | |
+    |                                                               | |
+    |                                                               +-+
+    +----------------------------------+        +-+            +----+ |
+                                       +--------+ +------------+      |
+
+

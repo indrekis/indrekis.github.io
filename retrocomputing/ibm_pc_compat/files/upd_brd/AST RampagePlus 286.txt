@@ -1,0 +1,152 @@
+
+For 2 versions of the RampagePlus 286 
+
+RampagePlus 286       AST Part Number 202247-001
+RampagePlus 286       AST Part Number 202349-001
+
+
+==============================================================================
+
+RampagePlus 286                                     AST Part Number 202247-001
+
+The RampagePlus 286 is a memory expansion adapter for the IBM PC/AT and 100%
+compatibles running at up to 10MHz.  Memory can be expanded on this board from
+512K to 8MBytes using industry standard 256K or 1024K Single In-Line Memory
+Modules (SIMMs)  Memory standards supported by the RampagePlus 286 include
+conventional (base 640K), linear extended, LIM 3.2, LIM 4.0, and EEMS.  The
+RampagePlus 286 can also support Parallel and Serial I/O with an optional
+Daughterboard (AST Part No. 500560-002).
+
+Configuration of this board is achieved through "smart switch" technology.
+Software is required to set such options as starting address, linear memory
+installed, parity enable, etc.  The program required is on the RampagePlus 286
+Utilities Disk (AST Part No. 910316-001).
+
+
+MEMORY CONFIGURATION
+
+    Speed requirements for the SIMM Modules will vary depending on the BUS
+    speed of the system:
+
+        BUS SPEED
+        6/8MHz  10MHz
+        ------  -----
+        120NS   100NS
+
+    The RampagePlus 286 will accept either 256K or 1024K SIMMs.  A bank of
+    memory would consist of two modules; installing a single module will cause
+    errors.  There are four banks available to populate, and if 256K and 1024K
+    modules are both used, the 256K modules must be installed in the lower
+    numbered banks.  A list of valid configurations follows:
+
+        BANK1  BANK2  BANK3  BANK4    TOTAL MEMORY
+        -----  -----  -----  -----   --------------
+         512K    -      -      -      512K (0.5 MB)
+         512K   512K    -      -     1024K (1.0 MB)
+         512K   512K   512K    -     1536K (1.5 MB)
+         512K   512K   512K   512K   2048K (2.0 MB)
+        2048K    -      -      -     2048K (2.0 MB)
+         512K  2048K    -      -     2560K (2.5 MB)
+         512K   512K  2048K    -     3072K (3.0 MB)
+         512K   512K   512K  2048K   3584K (3.5 MB)
+        2048K  2048K    -      -     4096K (4.0 MB)
+         512K  2048K  2048K    -     4608K (4.5 MB)
+         512K   512K  2048K  2048K   5120K (5.0 MB)
+        2048K  2048K  2048K    -     6144K (6.0 MB)
+         512K  2048K  2048K  2048K   6656K (6.5 MB)
+        2048K  2048K  2048K  2048K   8192K (8.0 MB)
+
+        NOTE: 512K = TWO 256K  SIMM MODULES
+             2048K = TWO 1024K SIMM MODULES
+
+
+JUMPER SETTINGS
+
+    JP1 - Change Configuration
+
+    This is a three-pin jumper.  Every time the SMART.COM program is run in
+    "automatic" mode, the jumper must be reversed (ie change plug from pins
+    1&2 to 2&3 or vice-versa)  This change is not neccesary if the board is
+    configured in "manual" mode by SMART.
+
+    JP2 thru JP5 - Board Identification
+
+    If more than one "smart switch" adapter is installed in one system, each
+    board must have a unique identification in order to be recognized by the
+    configuration software.  The default setting (JP2) identifies the
+    RampagePlus 286 as the first "smart" board in the system.  JP3 would be
+    the second board, JP4 the third, and JP5 the fourth.
+
+
+JUMPER LOCATIONS
+
+
+    +---------------------------------------------------------------+
+    |  +---+ +---+ +---+ +---+  *****<---- JP LOCATIONS             | +---
+    |  | O | | T | | T | | F |  12345                               +-+
+    |  | N | | W | | H | | O |                                      | |
+    |  | E | | O | | R | | U |                                      | |
+    |  |   | |   | | E | | R |                                      | |
+    |  |   | |   | | E | |   |<----- MEMORY BANKS                   | |
+    |  |   | |   | |   | |   |                                      | |
+    |  |   | |   | |   | |   |                                      | |
+    |  |   | |   | |   | |   |                                      | |
+    |  +---+ +---+ +---+ +---+                                      +-+
+    +----------------------------------+        +-+            +----+ |
+                                       +--------+ +------------+      |
+                                                                      |
+
+
+==============================================================================
+
+RampagePlus 286                                     AST Part Number 202349-001
+
+The AST RampagePlus 286 board offers flexible and powerful memory enhancement
+for the AST Bravo/286, AST Premium/286, AST Premium Workstation, IBM PC/AT,
+IBM PS/2 Model 30 286,and compatible computers.  It offers complete hardware
+compatibility with Expanded Memory Specification (EMS) 4.0 software.
+
+The RampagePlus 286 Smart Switch configuration software eliminates the need to
+set board switches.  The software can make optimal settings for your computer
+automatically, or you can select from easy to use menus. The RampagePlus 286
+board retains your selected configuration even when your system is turned off.
+
+You can upgrade your RampagePlus 286 board's memory to a maximum of eight
+megabytes (MB) with single inline memory modules (SIMMS) that snap in and out
+of the board sockets.  The optional I/O Pak 286-SP Piggyback board (AST P/N
+500560-002) adds one serial port and one parallel port to your RampagePlus 286
+board.  The RampagePlus 286 board has four pairs of sockets called banks.
+Rampage Plus 286 can use 256K or 1MB SIMMs in combinations up to 8MB.  DO NOT
+MIX SIMM SIZES AND SPEEDS WITHIN A BANK THIS WILL CAUSE ERRORS.
+
+
+CHANGING THE DEFAULT JUMPER
+
+To use automatic mode after adding or removing memory, you must set the
+default configuration jumper (J3) to the alternate position. This disables the
+memory on the board until you reconfigure it with the SmartSwitch (RAMP.COM)
+program.  For example, if the jumper is on pins 1 and 2, move it to pins 2 and
+3, if the jumper is on pins 2 and 3, move it to pins 1 and 2.
+
+
+JUMPER LOCATIONS
+
+    +---------------------------------------------------------------¿
+    | +---+---+---+---+                                             | +---
+    | |   |   |   |   |                                             +-+
+    | | B | B | B | B |                    (J3)--> ***              | |
+    | | A | A | A | A |                                             | |
+    | | N | N | N | N |                                             | |
+    | | K | K | K | K |                                             | |
+    | |   |   |   |   |                                             | |
+    | | 0 | 1 | 2 | 3 | <-- Memory Banks                            | |
+    | |   |   |   |   |                                             | |
+    | |   |   |   |   |                                             +-+
+    | +---+---+---+---+                                             | |
+    +----------------------------------+        +-+            +----+ |
+                                       +--------+ +------------+      |
+
+
+
+
+==============================================================================
