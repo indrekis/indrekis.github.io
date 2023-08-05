@@ -1,23 +1,23 @@
 ---
 layout: post
 title:  "Сучасні плати для IBM PC/XT"
-date:   2023-08-04 1:23:45 +0300
+date:   2023-08-05 1:23:45 +0300
 tags: [retrocomputing, IBM PC та сумісні, DOS]
 # categories: [retrocomputing, IBM-PC-compat]
 comments: true
 excerpt_separator: <!--more-->
 ---
-- [RAM](#ram)
-- [Ввід-вивід](#ввід-вивід)
-  - [HDD](#hdd)
-  - [FDD](#fdd)
-  - [Мережа\[^C\]](#мережаc)
-  - [Інше](#інше)
-- [Сучасні клони ретро-комп'ютерів](#сучасні-клони-ретро-компютерів)
-  - [CP/M](#cpm)
-  - [XT](#xt)
-- [Посилання](#посилання)
-- [Виноски](#виноски)
+- [RAM]({% post_url /retrocomputing/ibm_pc_compat/2023-08-05-modern_update_boards_1 %}#ram)
+- [Ввід-вивід]({% post_url /retrocomputing/ibm_pc_compat/2023-08-05-modern_update_boards_1 %}#ввід-вивід)
+  - [HDD]({% post_url /retrocomputing/ibm_pc_compat/2023-08-05-modern_update_boards_1 %}#hdd)
+  - [FDD]({% post_url /retrocomputing/ibm_pc_compat/2023-08-05-modern_update_boards_1 %}#fdd)
+  - [Мережа]({% post_url /retrocomputing/ibm_pc_compat/2023-08-05-modern_update_boards_1 %}#мережа) 
+  - [Інше]({% post_url /retrocomputing/ibm_pc_compat/2023-08-05-modern_update_boards_1 %}#інше)
+- [Сучасні клони ретро-комп'ютерів]({% post_url /retrocomputing/ibm_pc_compat/2023-08-05-modern_update_boards_1 %}#сучасні-клони-ретро-компютерів)
+  - [CP/M]({% post_url /retrocomputing/ibm_pc_compat/2023-08-05-modern_update_boards_1 %}#cpm)
+  - [XT]({% post_url /retrocomputing/ibm_pc_compat/2023-08-05-modern_update_boards_1 %}#xt)
+- [Посилання]({% post_url /retrocomputing/ibm_pc_compat/2023-08-05-modern_update_boards_1 %}#посилання)
+- [Виноски]({% post_url /retrocomputing/ibm_pc_compat/2023-08-05-modern_update_boards_1 %}#виноски)
 
 Виявилося,нові плати оновлення та інше обладнання для ретрокомп'ютерів,  розробляють та продають досі. При тому, IBM PC, певне, навіть не найпопулярніша платформа.  
 
