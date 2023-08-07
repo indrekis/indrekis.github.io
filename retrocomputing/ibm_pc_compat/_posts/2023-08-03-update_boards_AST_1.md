@@ -182,5 +182,18 @@ Windows 3.0 ця пам'ять теж сподобалася -- почав пр�
 
 Якщо таки вдасться завести працездатну IBM PC 5150 -- маю шанс, почну і таку шукати. 
 
+# Посилання
+
+- [Microsoft KB Archive/66420](https://www.betaarchive.com/wiki/index.php/Microsoft_KB_Archive/66420#Expanded_Memory) -- велика стаття про види пам'яті та як її використовували 16-бітні Windows.
+- [Windows 3.1 and Memory Management](http://www.tech-insider.org/windows/research/acrobat/920221/2MEMWW.pdf) -- глава 5 з "[Windows Resource Kit](https://www.tech-insider.org/windows/research/acrobat/920221/0PART.pdf)" для Windows 3.1.
+- Відео: [Windows 3.0, Real-Mode, Small-Frame EMS and Origami](https://www.youtube.com/watch?v=XqFSWnMpVic), в описі є трохи технічних подробиць.
+- [Про HT12 чіпсет](https://www.vogons.org/viewtopic.php?f=46&t=33076&start=20) для 286, зокрема HT12EMS.SYS дозволяв відображати пам'ять на UMB.
+- [Expanded memory managers and DOS](https://www.vogons.org/viewtopic.php?p=1114766):
+  - "*Anyway, Windows 3.0 does support LIM4 or EEMS, it's spiritual predecessor. Windows 3.0 supports 64KB and 256KB page frames for EMS.*" 
+  - "*Using DOS 6.x and running MemMaker can help to make Windows 3.0 see proper EMS, also. For testing purposes, I mean.*"
+  - "*Windows 2.x has trouble with CuteMouse being loaded. MS Mouse v6.24 does not cause trouble, however. I guess the same goes for MS Mouse drivers in general.*"
+  - "*Windows 2.x is DOS 4 aware, which causes trouble with later DOSes that use the older DOS 3 kernal structure (that's DOS 5, 6 etc). Hence, SETVER or DOSVER must be used to fake a DOS 3.x version (I use 3.30).*"
+  - "*An obsolete version of REMM.SYS ships with Windows 2.03 (I tried it originally, before I found an updated REMM.SYS online).*"
+
 # Виноски
 
