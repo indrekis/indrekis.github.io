@@ -198,7 +198,7 @@ excerpt_separator: <!--more-->
 
 Ще один варіант: [Micro 8088](https://github.com/skiselev/micro_8088), на базі чіпсету Faraday FE2010/FE2010A.
 
-Ще один: [NuXT](https://monotech.fwscart.com/NuXT_v20_-_MicroATX_Turbo_XT_-_10MHz_832K_XT-IDE_Multi-IO_SVGA/p6083514_19777986.aspx), просунута, але дорога.
+Ще один: [NuXT](https://monotech.fwscart.com/NuXT_v20_-_MicroATX_Turbo_XT_-_10MHz_832K_XT-IDE_Multi-IO_SVGA/p6083514_19777986.aspx), просунута, але дорога. Гарний та детальний огляд другої версії: "[NuXT 2.0 Motherboard - A New 8088 Motherboard for your DIY PC Clone](http://nerdlypleasures.blogspot.com/2023/09/nuxt-20-motherboard-new-8088.html)". За тим посиланням також згадано сучасні цікаві клони -- [CGA_Redux](https://github.com/hkzlab/CGA_Redux), [RadLib OPL2 Sound Card](https://texelec.com/product/radlib-opl2-sound-card-8-bit-isa-adlib-clone/). 
 
 Нарешті, недавно китайці випустили ноутбук із 8088 процесором, CGA, звуковою картою та опціональним ISA-продовжувачем, XT-CF HDD та USB. Купити, на момент написання, можна на AliExperess: ["Book 8088 DOS system laptop computer CGA graphics card IBM PC XT compatible machine 8088 8086CPU microcomputer principle"](https://www.aliexpress.com/item/1005005528944178.html). Огляди: [1](https://medium.com/@davidly_33504/the-book-8088-is-too-fast-c0a2f01a1cc8) та [2](https://arstechnica.com/gadgets/2023/07/going-deep-with-the-book-8088-the-brand-new-laptop-that-runs-like-its-1981/).
 
