@@ -1481,5 +1481,6 @@ Extended, and Quadruple Precision by Vincenzo Innocente and Paul Zimmermann, 202
   - "[Bug 323 -- optimized code gives strange floating point results](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=323)"
   <!-- https://habr.com/ru/articles/754730/ -- переклад -->
 - [ARMv8 Instruction Set Overview](https://www.cs.princeton.edu/courses/archive/spr19/cos217/reading/ArmInstructionSetOverview.pdf).
+- ["Performance Degradation in the Presence of Subnormal Floating-Point Values", 2005](https://charm.cs.illinois.edu/newPapers/05-12/paper.pdf) -- для паралельного коду, на прикладі Alpha i Intel x86. Конкретна інформація застаріла, звичайно, але застереження -- ні.
 
 # Виноски
