@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Огляд floating point -- комп'ютерних чисел з рухомою крапкою "
+title:  "Огляд floating point -- комп'ютерних чисел з рухомою крапкою"
 date:   2023-09-23 5:44:20 +0300
 comments: true
 tags: [методичка, floating point, float, double, FP8, IEEE 754]
@@ -1061,6 +1061,8 @@ _controlfp_s(&current_word, _DN_FLUSH, _MCW_DN);
 Приблизно такі ж оптимізації дозволяє компілятору від Мікрософт ключ ``/fp:fast``.
 
 Детальніше -- див. документацію: [/fp (Specify floating-point behavior)](https://learn.microsoft.com/en-us/cpp/build/reference/fp-specify-floating-point-behavior?view=msvc-170&redirectedfrom=MSDN).
+
+MSVC взагалі має трохи нюансів. Наприклад, цитата з документації на [printf-подібні функції](https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/sprintf-sprintf-l-swprintf-swprintf-l-swprintf-l?view=msvc-170): "*Starting in Windows 10 version 2004 (build 19041), the printf family of functions prints exactly representable floating point numbers according to the IEEE 754 rules for rounding. In previous versions of Windows, exactly representable floating point numbers ending in '5' would always round up.*"
 
 
 # FP8
