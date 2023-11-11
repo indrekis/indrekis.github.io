@@ -1483,5 +1483,7 @@ Extended, and Quadruple Precision by Vincenzo Innocente and Paul Zimmermann, 202
 - [ARMv8 Instruction Set Overview](https://www.cs.princeton.edu/courses/archive/spr19/cos217/reading/ArmInstructionSetOverview.pdf).
 - ["Performance Degradation in the Presence of Subnormal Floating-Point Values", 2005](https://charm.cs.illinois.edu/newPapers/05-12/paper.pdf) -- для паралельного коду, на прикладі Alpha i Intel x86. Конкретна інформація застаріла, звичайно, але застереження -- ні.
 - ["Unum "](https://en.wikipedia.org/wiki/Unum_(number_format)) -- цікава, але дискусійна спроба запропонувати альтернативний формат чисел з рухомою крапкою.
+- ["Floating Point Visually Explained"](https://fabiensanglard.net/floating_point_visually_explained/index.html).
+- ["Whetstone Benchmark History and Results"](http://www.roylongbottom.org.uk/whetstone.htm) -- описано відповідний (застарілий) тест продуктивності floating point обчислень та його результати різних машин за тривалий час.
 
 # Виноски
