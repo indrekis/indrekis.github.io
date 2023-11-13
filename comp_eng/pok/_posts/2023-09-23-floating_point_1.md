@@ -882,7 +882,7 @@ ISA RISC-V зроблена зручною для розширення. Такі
 
 Для керування поведінкою цих розширень використовується регістр fcsr -- [Floating-Point Control and Status Register](https://five-embeddev.com/riscv-isa-manual/latest/f.html).
 
-| ![Alt text](/comp_eng/pok/pics/RISC-V-CSR.png) |
+| ![](/comp_eng/pok/pics/RISC-V-CSR.png) |
 |:----------------------------:|
 | RISC-V fcsr, взято [тут](https://five-embeddev.com/riscv-isa-manual/latest/f.html). |
 
