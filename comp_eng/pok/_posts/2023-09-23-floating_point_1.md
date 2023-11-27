@@ -900,6 +900,24 @@ ISA RISC-V зроблена зручною для розширення. Такі
 
 Alpha AXP ISA, на жаль, закинута, але цікава. Зокрема, вона підтримує як IEEE floating point, так і VAX FP -- див. дискусію щодо стандартизації. 
 
+Кілька слів про VAX Floating point:
+
+- Ідея та ж, що й за IEEE числами.
+- Однак, денормалізованих чисел немає.
+- Для ще більш глибокої сумісності, з [PDP-11 FP](https://groups.google.com/g/comp.sys.dec/c/61hlTFaD7qA/m/xFK-hJ88SToJ), формат трішки дивний -- різні частини переплутані. 
+- Існує D_floating та G_floating -- обидва 64-бітові, але з експонентою різного розміру. Також -- H_floating, 128-бітовий тип. 
+  - 64-бітовий D_floating відрізняється від 32-бітового F_floating лише додатковими 32-ма бітами дробової частини -- мантиси.
+- Від'ємного нуля, NaN чи безмежностей -- немає. 
+- Вважається, що ліворуч є неявна одиничка, перед якою -- крапка. 
+  - Тобто, якщо мантиса має вигляд "abc...", це інтерпретується як "0.1abc..." -- значення мантиси чисел знаходяться між 0.5 і 1 -- на відміну від нормалізованих IEEE чисел, які між 1 і 2.
+
+
+| ![](/comp_eng/pok/pics/vax_1.png) |
+| :---------------: |
+| Приклад F_floating числа -- VAX FP. Зауважте, що дробова частина не неперервна, розбита на дві. Її можна просто відкинути, із втратою точності, звичайно. Bias = 128, не 127 як для IEEE 754 FP32. Таблицю взято [тут](https://nssdc.gsfc.nasa.gov/nssdc/formats/VAXFloatingPoint.htm).|
+
+GCC, теоретично, вміє їх використовувати -- див. опцію [-mfloat-vax](https://gcc.gnu.org/onlinedocs/gcc/DEC-Alpha-Options.html).
+
 Детальніше поки не розглядаємо, але див. [Alpha AXP Architecture Reference Manual](http://www.bitsavers.org/pdf/dec/alpha/Sites_AlphaAXPArchitectureReferenceManual_2ed_1995.pdf), стор. 4-68, Floating-Point Control Register (FPCR).
 
 ## SPARC v9
@@ -1485,5 +1503,13 @@ Extended, and Quadruple Precision by Vincenzo Innocente and Paul Zimmermann, 202
 - ["Unum "](https://en.wikipedia.org/wiki/Unum_(number_format)) -- цікава, але дискусійна спроба запропонувати альтернативний формат чисел з рухомою крапкою.
 - ["Floating Point Visually Explained"](https://fabiensanglard.net/floating_point_visually_explained/index.html).
 - ["Whetstone Benchmark History and Results"](http://www.roylongbottom.org.uk/whetstone.htm) -- описано відповідний (застарілий) тест продуктивності floating point обчислень та його результати різних машин за тривалий час.
+- ["16-, 8- и 4-битные форматы чисел с плавающей запятой"](https://habr.com/ru/companies/wunderfund/articles/776496/).
+- ["Data Format and Conversion Information for Heritage Data at the National Space Science Data Center"](https://nssdc.gsfc.nasa.gov/nssdc/formats/) -- формат представлення різних даних комп'ютерами, що використовуювалися NASA, включаючи дуже старі машини.
+  - [PDP-11 floating point](https://nssdc.gsfc.nasa.gov/nssdc/formats/PDP-11.htm)
+  - [CDC 1604 floating point](https://nssdc.gsfc.nasa.gov/nssdc/formats/CDC1604.html) -- від'ємні числа зображаються [оберненим кодом (ones' complement)](https://uk.wikipedia.org/wiki/%D0%9E%D0%B1%D0%B5%D1%80%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9_%D0%BA%D0%BE%D0%B4).
+  - [VAX Floating Point Numbers](https://nssdc.gsfc.nasa.gov/nssdc/formats/VAXFloatingPoint.htm)
+    - [Додатково про VAX-формат -- дискусія](https://groups.google.com/g/comp.sys.dec/c/61hlTFaD7qA/m/xFK-hJ88SToJ);
+    - dідповідь ["Floating Point numbers on VAX machine"](https://stackoverflow.com/a/71698171) на stackoverflow;
+    - ["VAX FLOATING POINT: A Solid Foundation For Numerical Computation"](https://dl.acm.org/doi/pdf/10.1145/641845.641849) by Mary Payne and Dileep Bhandarkar, 1980.
 
 # Виноски
