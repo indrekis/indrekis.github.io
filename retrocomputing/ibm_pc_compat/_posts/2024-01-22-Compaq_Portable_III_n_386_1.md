@@ -839,7 +839,7 @@ Volkov Commander працює звично. Dos Navigator мигає, за ст�
 
 Використана конфігурація така: 
 
-CONFIG.SYS: 
+**``CONFIG.SYS``**:
 
 ```bat
 [MENU]
@@ -897,7 +897,7 @@ device=c:\win211\himem.sys
 devicehigh=c:\dos\setver.exe
 ```
 
-AUTOEXEC.BAT:
+**``AUTOEXEC.BAT``**:
 
 ```bat
 @ECHO OFF
@@ -936,6 +936,18 @@ C:\UTILS\CTMOUSE.EXE
 REM ALMOST CGA -- KEYRUS DOES NOT WORKS
 rem keyrus.com
 rem sc
+```
+
+**``DOS-UP.DAT``** -- конфігурація для DOS-UP.SYS: 
+
+```text
+DOSDATA=1
+INSTALL=1
+STACKS=1
+LASTDRIV=1
+BUFFERS=1
+FCBS=1
+FILES=1
 ```
 
 | ![](/retrocomputing/ibm_pc_compat/pics/CompaqPortable3/win211_14a.jpg) |
