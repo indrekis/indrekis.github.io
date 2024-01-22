@@ -12,6 +12,7 @@ source "https://rubygems.org"
 #gem "minima", "~> 2.5"
 gem "jekyll-theme-so-simple"
 gem 'faraday', '~> 2.7', '>= 2.7.11'
+gem 'faraday-retry', '~> 2.0', '>= 2.0.0'
 #gem "github-pages", group: :jekyll_plugins
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
