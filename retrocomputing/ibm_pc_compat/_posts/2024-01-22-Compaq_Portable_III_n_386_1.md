@@ -17,36 +17,36 @@ excerpt_separator: <!--more-->
 
 > Обережно -- далі 20 Мб  фотографій, більшість з яких, на жаль, неякісні або й жахливі.
 
-- [Загальний опис](#загальний-опис)
-  - [Опціональні розширення](#опціональні-розширення)
-- [Налаштування та продуктивність](#налаштування-та-продуктивність)
-  - [Продуктивність](#продуктивність)
-    - [Теорія](#теорія)
-    - [Практика](#практика)
-    - [Використання MODE](#використання-mode)
-    - [Переключення з використанням int 16h та портів](#переключення-з-використанням-int-16h-та-портів)
-    - [Результати тестування](#результати-тестування)
-  - [Графіка](#графіка)
-    - [Теорія](#теорія-1)
-    - [Практика](#практика-1)
-    - [Переключення з використанням портів та int 10h -- теорія](#переключення-з-використанням-портів-та-int-10h----теорія)
-    - [Переключення з використанням портів та int 10h -- практика](#переключення-з-використанням-портів-та-int-10h----практика)
-    - [Продуктивність](#продуктивність-1)
-  - [Open source замінник MODE*CMPQ*.COM](#open-source-замінник-modecmpqcom)
-  - [Конфігуратор від Compaq](#конфігуратор-від-compaq)
-    - [Аномалія HDD на 286](#аномалія-hdd-на-286)
-    - [Вміст CMOS](#вміст-cmos)
-    - [Файли для завантаження](#файли-для-завантаження)
-  - [Експерименти з розширювачем](#експерименти-з-розширювачем)
-- [Досвід експлуатації](#досвід-експлуатації)
-  - [Обидва](#обидва)
-  - [386](#386)
-    - [Windows 3.11](#windows-311)
-  - [286](#286)
-    - [Windows 3.00](#windows-300)
-- [Підсумок](#підсумок)
-- [Посилання](#посилання)
-- [Виноски](#виноски)
+- [Загальний опис]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#загальний-опис)
+  - [Опціональні розширення]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#опціональні-розширення)
+- [Налаштування та продуктивність]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#налаштування-та-продуктивність)
+  - [Продуктивність]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#продуктивність)
+    - [Теорія]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#теорія)
+    - [Практика]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#практика)
+    - [Використання MODE]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#використання-mode)
+    - [Переключення з використанням int 16h та портів]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#переключення-з-використанням-int-16h-та-портів)
+    - [Результати тестування]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#результати-тестування)
+  - [Графіка]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#графіка)
+    - [Теорія]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#теорія-1)
+    - [Практика]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#практика-1)
+    - [Переключення з використанням портів та int 10h -- теорія]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#переключення-з-використанням-портів-та-int-10h----теорія)
+    - [Переключення з використанням портів та int 10h -- практика]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#переключення-з-використанням-портів-та-int-10h----практика)
+    - [Продуктивність]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#продуктивність-1)
+  - [Open source замінник MODE*CMPQ*.COM]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#open-source-замінник-modecmpqcom)
+  - [Конфігуратор від Compaq]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#конфігуратор-від-compaq)
+    - [Аномалія HDD на 286]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#аномалія-hdd-на-286)
+    - [Вміст CMOS]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#вміст-cmos)
+    - [Файли для завантаження]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#файли-для-завантаження)
+  - [Експерименти з розширювачем]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#експерименти-з-розширювачем)
+- [Досвід експлуатації]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#досвід-експлуатації)
+  - [Обидва]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#обидва)
+  - [386]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#386)
+    - [Windows 3.11]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#windows-311)
+  - [286]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#286)
+    - [Windows 3.00]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#windows-300)
+- [Підсумок]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#підсумок)
+- [Посилання]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#посилання)
+- [Виноски]({% post_url /retrocomputing/ibm_pc_compat/2024-01-22-Compaq_Portable_III_n_386_1 %}#виноски)
 
 
 
@@ -101,7 +101,7 @@ excerpt_separator: <!--more-->
 - Автоматично обирає живлення 110/220В.
 - Важкенькі! Забуваєш, що [Tandy 1400 LT]({% post_url /retrocomputing/ibm_pc_compat/2023-11-18-tandy_1400LT_1 %}) важким здавався...
 - Для нього компанія випускала кастомізований MS-DOS 3.2, який коштував додаткових [162 долари](https://archive.org/details/1987.06-australian-personal-computer/page/37/mode/1up?q=compaq&view=theater).
-  - Див. [розділ "завантаження"](#завантаження).
+  - Див. [розділ "завантаження"](#файли-для-завантаження).
 
 [^KBDHBT]: Як не дивно, Esc там видався мені доволі зручним -- почав на звичайній клавіатурі іноді його там шукати. 
 
@@ -1151,6 +1151,8 @@ Word чи Excel працюють добре, а ось софт презента
 Цікаві машинки! Та ще й, як на мене, дуже гарні. Друзі казали, нагадує щось військово-ядерне з фільмів часів Холодної війни. 
 
 Подвійно цікаві в контексті епохи -- безумно дорогі, на передньому краї тодішніх технологій. Зараз я їх використовував із помітно сучаснішим за комп'ютери, софтом -- вибір в 1987 був певне помітно скромнішим. Обмежитися "period correct" програмним забезпеченням, певне, було б цікавим досвідом -- але поки неохота, ця стаття й так майже рік писалася, а з софтом 87-го було б помітно сумніше. 
+
+Сповільнення від QEMM коду, що покладається на переривання, здивувавла -- не думав, що воно аж настільки помітне. Хоча, в [Windows 95 все багато гірше](http://indrekis2.blogspot.com/2015/12/windows-95.html)...
 
 В принципі, в 1990-х, для мене така машина була б просто мрією. Але й коштували вони як квартира. 
 
