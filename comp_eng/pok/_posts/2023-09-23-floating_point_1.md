@@ -951,6 +951,21 @@ ISA SPARC все ще [розвивається Oracle](https://en.wikipedia.org
 
 Ці засоби оголошено в файлах заголовків <fenv.h> та <сfenv>, відповідно. Далі, заради лаконічності, будемо розглядати на прикладі С++, однак засоби практично еквівалентні.
 
+[Формально, вважається](https://en.cppreference.com/w/c/numeric/fenv), що інструменти, перераховані далі, працюють лише за використання директиви:
+
+```C++
+#pragma STDC FENV_ACCESS ON
+```
+
+Без неї, в теорії, реалізація вважатиме, що всі налаштування -- за замовчуванням. На практиці, більшість компіляторів дозволяють модифікацію середовища і без неї. Компілятор Visual Studio цієї директиви [не знає](https://developercommunity.visualstudio.com/t/Support-for-ISO-C-pragma-STDC-FENV_ACCE/967544), але має [аналог](https://learn.microsoft.com/en-us/cpp/preprocessor/fenv-access?view=msvc-170): 
+
+```C++
+#pragma fenv_access (on)
+```
+
+Щоправда, цей аналог більш інтрузивний, забороняє оптимізації обчислень з рухомою крапкою, тому може [ламати обчислення floating point виразів під час компіляції](https://stackoverflow.com/questions/66110921/msvc-why-pragma-fenv-access-on-causes-error-c2099-initializer-is-not-a-c) тощо.
+
+
 Тип ``std::fenv_t`` описує floating point середовище. 
 
 [Пара функцій](https://en.cppreference.com/w/cpp/numeric/fenv/feenv) дозволяє його прочитати у змінну із відповідного апаратного забезпечення (наприклад, розглянутих раніше регістрів), або записати у апаратне середовище: 
@@ -962,6 +977,8 @@ int fesetenv( const std::fenv_t* envp );
 
 Поміж іншого, цим функціям можна передати консанту [FE_DFL_ENV](https://en.cppreference.com/w/cpp/numeric/fenv/FE_DFL_ENV), яка переведе середовище у стан за замовчуванням. 
 
+#### Керування заокругленням
+
 Наступна [пара функцій](https://en.cppreference.com/w/cpp/numeric/fenv/feround) керує напрямком заокруглення:
 
 ```C++
@@ -969,7 +986,270 @@ int fesetround( int round ); // Встановити
 int fegetround();   // Прочитати
 ```
 
-де заокруглення визначаються одним із наступних [макросів](https://en.cppreference.com/w/cpp/numeric/fenv/FE_round): ``FE_DOWNWARD``, ``FE_UPWARD``, ``FE_TONEAREST``, ``FE_TOWARDZERO``.
+де заокруглення визначаються одним із наступних [макросів](https://en.cppreference.com/w/cpp/numeric/fenv/FE_round): ``FE_DOWNWARD``, ``FE_UPWARD``, ``FE_TONEAREST``, ``FE_TOWARDZERO``. Реалізації можуть мати додаткові режими, але макроси оголошуються лише, якщо відповідний режим підтримується. 
+
+> Обчислення **під час компіляції** завжди відбуваються в режимі ``FE_TONEAREST``. Цей режим часто є за замовчуванням і під час виконання.
+
+> Зауважте, що  FE_UPWARD означає, наприклад, що 1.00000000001 буде заокруглено до 2. 
+
+Додатково, взнати **поточний** режим заокругелення можна за допомогою макросу [FLT_ROUNDS](https://en.cppreference.com/w/cpp/types/climits/FLT_ROUNDS) з ``<cfloat>``, можливі константи якого відповідають значенням [std::float_round_style](https://en.cppreference.com/w/cpp/types/numeric_limits/float_round_style). Як відбувається заокруглення за замовчуванням, під час перетворення у різні типи, див. [std::numeric_limits<T>::round_style](https://en.cppreference.com/w/cpp/types/numeric_limits/round_style).
+
+
+
+Також, С++ має цілий зоопарк функцій заокруглення. 
+
+- [std::rint()](https://en.cppreference.com/w/cpp/numeric/math/rint) і сімейство[^RFF] -- заокруглення, з використанням поточного режиму заокруглення. 
+- [std::nearbyint()](https://en.cppreference.com/w/cpp/numeric/math/nearbyint) -- те ж, хіба ніколи не спричиняє виключну ситуацію FE_INEXACT.
+  - Обидві ці функції, коли режим заокруглення FE_TONEAREST, ``X.5`` заокруглюють до до парного.
+- [std::round()](https://en.cppreference.com/w/cpp/numeric/math/round) -- заокруглює до найближчого, ігноруючи режим заокруглення, ``X.5`` заокруглює від нуля (до безмежності того ж знаку), на відміну від rint() та nearbyint().
+- [std::floor()](https://en.cppreference.com/w/cpp/numeric/math/floor) -- заокругляє вниз, до меншого. Для додатних -- еквівалентно відкиданню дробової частини, але це невірно для від'ємних.
+- [std::ceil()](https://en.cppreference.com/w/cpp/numeric/math/ceil) -- заокругляє вверх, до більшого. Для від'ємних -- еквівалентно відкиданню дробової частини
+- [std::trunc()](https://en.cppreference.com/w/cpp/numeric/math/trunc) -- відкидає дробову частину. Еквівалентне заокругленню до нуля. 
+
+[^RFF]: Ці функції часто мають багато перевантажень і багато варіантів з іншими іменами. Наприклад, rintf(), rintl(), lrint(), тощо -- кілька десятків. Їх не перераховуватиму, див. документацію за посиланнями. Тут зосереджуся на варіаціях у логіці заокруглення. 
+
+> Заокруглення до вказаної кількості десяткових цифр, на жаль, в стандартній бібілотеці немає. Можна скористатися таким трюком: ``std::rint( x * 10)/10``, але щодо суворої відповідності вимогам заокруглення IEEE 754, можуть бути нюанси. 
+>
+> Зокрема, в рамках ["The One Billion Row Challenge"](https://github.com/gunnarmorling/1brc), потрібно виводити одну десяткову цифру після крапки, з заокруленням до безмежності. Єдиний варіант, який вдалося змусити працювати: ``std::round(val.mean/val.quantity*10.0 + 0.5)/10.0``, не зважаючи на режими заокруглення. Зокрема, невірне заокруглення давали ``std::fesetround(FE_UPWARD); std::rint(val.mean/val.quantity*10.0)/10.0;``. Ймовірно, щось роблю не так... 
+
+Приклад функціонування різних заокруглень. Виконано для GCC 11.4 з опцією ``-frounding-math``, яка вимагає суворого дотримання правил заокруглення IEEE 754. Також, показано (стовпчики N.S. -- non-strict), де результати для цього компілятора, за ввімкненої оптимізації, відрізняються.
+
+| Дія            | TONEAREST | TOWARDZERO | DOWNWARD | N.S. | UPWARD | N.S. |
+|:--------------------------|:---|:---|:---|:--|:--|:--|
+| rint(1.00000000001)       | 1  | 1  | 1  |  | 2  |  |
+| rint(1.4)                 | 1  | 1  | 1  |  | 2  |  |
+| rint(1.5)                 | 2  | 1  | 1  |  | 2  |  |
+| rint(1.6)                 | 2  | 1  | 1  |  | 2  |  |
+| rint(2.5)                 | 2  | 2  | 2  |  | 3  |  |
+| rint(-1.00000000001)      | -1 | -1 | -1 | **-1** | -1 | **-2** |
+| rint(-1.6)                | -2 | -1 | -1 | **-1** | -1 | **-2** |
+| rint(-1.4)                | -1 | -1 | -1 | **-1** | -1 | **-2** |
+| rint(-1.5)                | -2 | -1 | -1 | **-1** | -1 | **-2** |
+| rint(-2.5)                | -2 | -2 | -2 | **-2** | -2 | **-3** |
+| 
+| nearbyint(1.00000000001)  | 1  | 1  | 1  |  | 2  |  |
+| nearbyint(1.4)            | 1  | 1  | 1  |  | 2  |  |
+| nearbyint(1.5)            | 2  | 1  | 1  |  | 2  |  |
+| nearbyint(1.6)            | 2  | 1  | 1  |  | 2  |  |
+| nearbyint(2.5)            | 2  | 2  | 2  |  | 3  |  |
+| nearbyint(-1.00000000001) | -1 | -1 | -1 |  | -1 |  |
+| nearbyint(-1.6)           | -2 | -1 | -1 |  | -1 |  |
+| nearbyint(-1.4)           | -1 | -1 | -1 |  | -1 |  |
+| nearbyint(-1.5)           | -2 | -1 | -1 |  | -1 |  |
+| nearbyint(-2.5)           | -2 | -2 | -2 |  | -2 |  |
+| 
+| round(1.00000000001)      | 1  | 1  | 1  |  | 1  |  |
+| round(1.4)                | 1  | 1  | 1  |  | 1  |  |
+| round(1.5)                | 2  | 2  | 2  |  | 2  |  |
+| round(1.6)                | 2  | 2  | 2  |  | 2  |  |
+| round(2.5)                | 3  | 3  | 3  |  | 3  |  |
+| round(-1.00000000001)     | -1 | -1 | -1 |  | -1 |  |
+| round(-1.6)               | -2 | -2 | -2 |  | -2 |  |
+| round(-1.4)               | -1 | -1 | -1 |  | -1 |  |
+| round(-1.5)               | -2 | -2 | -2 |  | -2 |  |
+| round(-2.5)               | -3 | -3 | -3 |  | -3 |  |
+| 
+| floor(1.00000000001)      | 1  | 1  | 1  |  | 1  |  |
+| floor(1.4)                | 1  | 1  | 1  |  | 1  |  |
+| floor(1.5)                | 1  | 1  | 1  |  | 1  |  |
+| floor(1.6)                | 1  | 1  | 1  |  | 1  |  |
+| floor(2.5)                | 2  | 2  | 2  |  | 2  |  |
+| floor(-1.00000000001)     | -2 | -2 | -2 |  | -2 |  |
+| floor(-1.6)               | -2 | -2 | -2 |  | -2 |  |
+| floor(-1.4)               | -2 | -2 | -2 |  | -2 |  |
+| floor(-1.5)               | -2 | -2 | -2 |  | -2 |  |
+| floor(-2.5)               | -3 | -3 | -3 |  | -3 |  |
+| 
+| ceil(1.00000000001)       | 2  | 2  | 2  |  | 2  |  |
+| ceil(1.4)                 | 2  | 2  | 2  |  | 2  |  |
+| ceil(1.5)                 | 2  | 2  | 2  |  | 2  |  |
+| ceil(1.6)                 | 2  | 2  | 2  |  | 2  |  |
+| ceil(2.5)                 | 3  | 3  | 3  |  | 3  |  |
+| ceil(-1.00000000001)      | -1 | -1 | -1 |  | -1 |  |
+| ceil(-1.6)                | -1 | -1 | -1 |  | -1 |  |
+| ceil(-1.4)                | -1 | -1 | -1 |  | -1 |  |
+| ceil(-1.5)                | -1 | -1 | -1 |  | -1 |  |
+| ceil(-2.5)                | -2 | -2 | -2 |  | -2 |  |
+| 
+| trunc(1.00000000001)      | 1  | 1  | 1  |  | 1  |  |
+| trunc(1.4)                | 1  | 1  | 1  |  | 1  |  |
+| trunc(1.5)                | 1  | 1  | 1  |  | 1  |  |
+| trunc(1.6)                | 1  | 1  | 1  |  | 1  |  |
+| trunc(2.5)                | 2  | 2  | 2  |  | 2  |  |
+| trunc(-1.00000000001)     | -1 | -1 | -1 |  | -1 |  |
+| trunc(-1.6)               | -1 | -1 | -1 |  | -1 |  |
+| trunc(-1.4)               | -1 | -1 | -1 |  | -1 |  |
+| trunc(-1.5)               | -1 | -1 | -1 |  | -1 |  |
+| trunc(-2.5)               | -2 | -2 | -2 |  | -2 |  |
+
+<!--
+| Дія            | TONEAREST | N.S. | TOWARDZERO | N.S. | DOWNWARD | N.
+N.S. |
+|:--|:--|:--|:--|:--|:--|:--|:--|:--|
+| rint(1.00000000001)       | 1  | 1  | 1  | 1  | 1  | 1  | 2  | 2  |
+| rint(1.4)                 | 1  | 1  | 1  | 1  | 1  | 1  | 2  | 2  |
+| rint(1.5)                 | 2  | 2  | 1  | 1  | 1  | 1  | 2  | 2  |
+| rint(1.6)                 | 2  | 2  | 1  | 1  | 1  | 1  | 2  | 2  |
+| rint(2.5)                 | 2  | 2  | 2  | 2  | 2  | 2  | 3  | 3  |
+| rint(-1.00000000001)      | -1 | -1 | -1 | -1 | -2 | **-1** | -1 | **
+| rint(-1.6)                | -2 | -2 | -1 | -1 | -2 | **-1** | -1 | **
+| rint(-1.4)                | -1 | -1 | -1 | -1 | -2 | **-1** | -1 | **
+| rint(-1.5)                | -2 | -2 | -1 | -1 | -2 | **-1** | -1 | **
+| rint(-2.5)                | -2 | -2 | -2 | -2 | -3 | **-2** | -2 | **
+| 
+| nearbyint(1.00000000001)  | 1  | 1  | 1  | 1  | 1  | 1  | 2  | 2  |
+| nearbyint(1.4)            | 1  | 1  | 1  | 1  | 1  | 1  | 2  | 2  |
+| nearbyint(1.5)            | 2  | 2  | 1  | 1  | 1  | 1  | 2  | 2  |
+| nearbyint(1.6)            | 2  | 2  | 1  | 1  | 1  | 1  | 2  | 2  |
+| nearbyint(2.5)            | 2  | 2  | 2  | 2  | 2  | 2  | 3  | 3  |
+| nearbyint(-1.00000000001) | -1 | -1 | -1 | -1 | -2 | -2 | -1 | -1 |
+| nearbyint(-1.6)           | -2 | -2 | -1 | -1 | -2 | -2 | -1 | -1 |
+| nearbyint(-1.4)           | -1 | -1 | -1 | -1 | -2 | -2 | -1 | -1 |
+| nearbyint(-1.5)           | -2 | -2 | -1 | -1 | -2 | -2 | -1 | -1 |
+| nearbyint(-2.5)           | -2 | -2 | -2 | -2 | -3 | -3 | -2 | -2 |
+| 
+| round(1.00000000001)      | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
+| round(1.4)                | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
+| round(1.5)                | 2  | 2  | 2  | 2  | 2  | 2  | 2  | 2  |
+| round(1.6)                | 2  | 2  | 2  | 2  | 2  | 2  | 2  | 2  |
+| round(2.5)                | 3  | 3  | 3  | 3  | 3  | 3  | 3  | 3  |
+| round(-1.00000000001)     | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 |
+| round(-1.6)               | -2 | -2 | -2 | -2 | -2 | -2 | -2 | -2 |
+| round(-1.4)               | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 |
+| round(-1.5)               | -2 | -2 | -2 | -2 | -2 | -2 | -2 | -2 |
+| round(-2.5)               | -3 | -3 | -3 | -3 | -3 | -3 | -3 | -3 |
+| 
+| floor(1.00000000001)      | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
+| floor(1.4)                | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
+| floor(1.5)                | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
+| floor(1.6)                | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
+| floor(2.5)                | 2  | 2  | 2  | 2  | 2  | 2  | 2  | 2  |
+| floor(-1.00000000001)     | -2 | -2 | -2 | -2 | -2 | -2 | -2 | -2 |
+| floor(-1.6)               | -2 | -2 | -2 | -2 | -2 | -2 | -2 | -2 |
+| floor(-1.4)               | -2 | -2 | -2 | -2 | -2 | -2 | -2 | -2 |
+| floor(-1.5)               | -2 | -2 | -2 | -2 | -2 | -2 | -2 | -2 |
+| floor(-2.5)               | -3 | -3 | -3 | -3 | -3 | -3 | -3 | -3 |
+| 
+| ceil(1.00000000001)       | 2  | 2  | 2  | 2  | 2  | 2  | 2  | 2  |
+| ceil(1.4)                 | 2  | 2  | 2  | 2  | 2  | 2  | 2  | 2  |
+| ceil(1.5)                 | 2  | 2  | 2  | 2  | 2  | 2  | 2  | 2  |
+| ceil(1.6)                 | 2  | 2  | 2  | 2  | 2  | 2  | 2  | 2  |
+| ceil(2.5)                 | 3  | 3  | 3  | 3  | 3  | 3  | 3  | 3  |
+| ceil(-1.00000000001)      | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 |
+| ceil(-1.6)                | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 |
+| ceil(-1.4)                | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 |
+| ceil(-1.5)                | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 |
+| ceil(-2.5)                | -2 | -2 | -2 | -2 | -2 | -2 | -2 | -2 |
+| 
+| trunc(1.00000000001)      | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
+| trunc(1.4)                | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
+| trunc(1.5)                | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
+| trunc(1.6)                | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
+| trunc(2.5)                | 2  | 2  | 2  | 2  | 2  | 2  | 2  | 2  |
+| trunc(-1.00000000001)     | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 |
+| trunc(-1.6)               | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 |
+| trunc(-1.4)               | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 |
+| trunc(-1.5)               | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 |
+| trunc(-2.5)               | -2 | -2 | -2 | -2 | -2 | -2 | -2 | -2 |
+ -->
+
+<!--
+Код, мені лінь окремим файлом:
+
+    std::cout << std::setprecision(10);
+
+    std::cout << FLT_ROUNDS << std::endl;
+
+    // std::fesetround(FE_TONEAREST);
+    // std::fesetround(FE_TOWARDZERO);
+    // std::fesetround(FE_DOWNWARD);
+    std::fesetround(FE_UPWARD);
+
+    std::cout << "\nstd::rint\n"
+            << std::rint(1.00000000001) << '\n'
+            << std::rint(1.4) << '\n'
+            << std::rint(1.5) << '\n'
+            << std::rint(1.6) << '\n'
+            << std::rint(2.5) << '\n'
+            << std::rint(-1.00000000001) << '\n'
+            << std::rint(-1.6) << '\n'
+            << std::rint(-1.4) << '\n'
+            << std::rint(-1.5) << '\n'
+            << std::rint(-2.5) << '\n'
+            ;
+
+    std::cout << "\nstd::nearbyint \n"
+            << std::nearbyint(1.00000000001) << '\n'
+            << std::nearbyint(1.4) << '\n'
+            << std::nearbyint(1.5) << '\n'
+            << std::nearbyint(1.6) << '\n'
+            << std::nearbyint(2.5) << '\n'
+            << std::nearbyint(-1.00000000001) << '\n'
+            << std::nearbyint(-1.6) << '\n'
+            << std::nearbyint(-1.4) << '\n'
+            << std::nearbyint(-1.5) << '\n'
+            << std::nearbyint(-2.5) << '\n'
+            ;
+            ;
+
+    std::cout << "\nstd::round\n"
+            << std::round(1.00000000001) << '\n'
+            << std::round(1.4) << '\n'
+            << std::round(1.5) << '\n'
+            << std::round(1.6) << '\n'
+            << std::round(2.5) << '\n'
+            << std::round(-1.00000000001) << '\n'
+            << std::round(-1.6) << '\n'
+            << std::round(-1.4) << '\n'
+            << std::round(-1.5) << '\n'
+            << std::round(-2.5) << '\n'
+            ;
+       ;
+
+    std::cout << "\nstd::floor\n"
+            << std::floor(1.00000000001) << '\n'
+            << std::floor(1.4) << '\n'
+            << std::floor(1.5) << '\n'
+            << std::floor(1.6) << '\n'
+            << std::floor(2.5) << '\n'
+            << std::floor(-1.00000000001) << '\n'
+            << std::floor(-1.6) << '\n'
+            << std::floor(-1.4) << '\n'
+            << std::floor(-1.5) << '\n'
+            << std::floor(-2.5) << '\n'
+            ;
+       ;
+
+    std::cout << "\nstd::ceil\n"
+            << std::ceil(1.00000000001) << '\n'
+            << std::ceil(1.4) << '\n'
+            << std::ceil(1.5) << '\n'
+            << std::ceil(1.6) << '\n'
+            << std::ceil(2.5) << '\n'
+            << std::ceil(-1.00000000001) << '\n'
+            << std::ceil(-1.6) << '\n'
+            << std::ceil(-1.4) << '\n'
+            << std::ceil(-1.5) << '\n'
+            << std::ceil(-2.5) << '\n'
+            ;
+       ;
+
+    std::cout << "\nstd::trunc\n"
+            << std::trunc(1.00000000001) << '\n'
+            << std::trunc(1.4) << '\n'
+            << std::trunc(1.5) << '\n'
+            << std::trunc(1.6) << '\n'
+            << std::trunc(2.5) << '\n'
+            << std::trunc(-1.00000000001) << '\n'
+            << std::trunc(-1.6) << '\n'
+            << std::trunc(-1.4) << '\n'
+            << std::trunc(-1.5) << '\n'
+            << std::trunc(-2.5) << '\n'
+            ;
+-->
+
+
+#### Інше
 
 Більше подробиць -- а їх трохи є(!), можна побачити за посиланням: "[Floating-point environment](https://en.cppreference.com/w/cpp/numeric/fenv)[^OMER]". Зокрема, там описано керування виключеннями -- наведу приклад звідти:
 
@@ -1063,6 +1343,8 @@ _controlfp_s(&current_word, _DN_FLUSH, _MCW_DN);
 
 Також, створюється макрос ``__FAST_MATH__`` для виявлення використання цієї опції в коді.
 
+З іншого боку, за замовчуванням, GCC використовує заокруглення до найближчого і не повідомляє навіть про signaling NaN. Ефект від цього можна побачити у табличці вище. Більш строгої відповідності стандарту можна досягнути опціями ``-frounding-math`` та ''-fsignaling-nans''.
+
 Детальніше див. [Optimizations enabled by -ffast-math](https://kristerw.github.io/2021/10/19/fast-math/), [Semantics of Floating Point Math in GCC](https://gcc.gnu.org/wiki/FloatingPointMath) та [Options That Control Optimization](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html).
 
 > Ремарка. Дуже хороша обчислювальна бібліотека, GSL  -- [GNU Scientific Library](https://www.gnu.org/software/gsl/), використовує тести, які чутливі до суворого дотримання стандарту IEEE 754 -- заради можливості використовувати її і в чутливих до точності та гарантій обчислень. Успішне проходження цих тестів потребує вимагати від компілятора суворо дотримуватися вимог стандарту. 
@@ -1072,15 +1354,48 @@ _controlfp_s(&current_word, _DN_FLUSH, _MCW_DN);
 
 ### Clang -ffast-math
 
-Аналогічний ключ є і в Clang. Подробиці відрізняються, але, в цілому, його функція та ж. А подробиці -- [див. у документації](https://clang.llvm.org/docs/UsersManual.html#cmdoption-ffast-math).
+Аналогічний ключ є і в Clang. Те ж стосується більш суворої відповідності стандарту. Подробиці відрізняються, але, в цілому, його функція та ж. А подробиці -- [див. у документації](https://clang.llvm.org/docs/UsersManual.html#cmdoption-ffast-math). 
 
 ### MSVC -- /fp:fast аналог, -ffast-math
 
-Приблизно такі ж оптимізації дозволяє компілятору від Мікрософт ключ ``/fp:fast``.
+Приблизно такі ж оптимізації дозволяє компілятору від Мікрософт ключ ``/fp:fast``. І навпаки, ``/fp:strict`` вимагає суворого дотримання стандарту. 
 
 Детальніше -- див. документацію: [/fp (Specify floating-point behavior)](https://learn.microsoft.com/en-us/cpp/build/reference/fp-specify-floating-point-behavior?view=msvc-170&redirectedfrom=MSDN).
 
 MSVC взагалі має трохи нюансів. Наприклад, цитата з документації на [printf-подібні функції](https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/sprintf-sprintf-l-swprintf-swprintf-l-swprintf-l?view=msvc-170): "*Starting in Windows 10 version 2004 (build 19041), the printf family of functions prints exactly representable floating point numbers according to the IEEE 754 rules for rounding. In previous versions of Windows, exactly representable floating point numbers ending in '5' would always round up.*"
+
+### Засоби GSL -- GNU Scientific Library
+
+Стандарти C та C++ отримали засоби керування floating point середовищем доволі пізно. Тому, різноманітні бібліотеки мусили шукати свої рішення. Зокрема, вже згадувана вище GSL, тести якої чутливі до суворої відповідності реалізації стандарту IEEE 754, використовує дещо екзотичний, але, певне -- зі своїми плюсами, метод.  
+
+Функція ``gsl_ieee_env_setup()`` встановлює конфігурацію обчислень з рухомою крапкою згідно вмісту **змінної середовища** ``GSL_IEEE_MODE``. Ця змінна, через кому, вказує потрібну конфігурацію: ``GSL_IEEE_MODE="double-precision, mask-underflow, mask-denormalized"``.
+
+Бібліотека дуже хороша! Детальніше розповідати про неї віднесе нас занадто далеко, та й документація в неї гарна -- немає потреби дублювати. Тому, враховуючи тему цього тексту, згадаю лише один допоміжний засіб: 
+
+```C
+int gsl_fcmp(double x, double y, double epsilon);
+```
+
+Ця функція перевіряє, чи x та y рівні в межах відносної похибки epsilon. Інтервал обирає як: \[ x - y < \pm 2^k \cdot \mathrm {epsilon}, \] де k -- більша з експонент x та y.
+
+Подробиці див. документацію: ["IEEE floating-point arithmetic"](https://www.gnu.org/software/gsl/doc/html/ieee754.html) та ["Approximate Comparison of Floating Point Numbers"](https://www.gnu.org/software/gsl/doc/html/math.html#approximate-comparison-of-floating-point-numbers).
+
+### Засоби Boost 
+
+''Бібліотека бібліотек'' [boost](https://www.boost.org) містить цілу секцію [математичних бібліотек](https://www.boost.org/doc/libs/?view=category_math)[^BMLR]. Відзначу поміж них [Multiprecision](https://www.boost.org/doc/libs/release/libs/multiprecision/) -- цілі та з рухомою крапкою числа довільної точності; [Rational](https://www.boost.org/doc/libs/release/libs/rational/) -- динамічні раціональні числа (на противагу статичним, часу компіляції, std::ratio -- які теж пішли з однойменної бібліотеки boost); [Safe Numerics](https://www.boost.org/doc/libs/release/libs/safe_numerics/) -- безпечні щодо переповнень цілі числа; [NumericConversion](https://www.boost.org/doc/libs/1_84_0/libs/numeric/conversion/doc/html/index.html); але вартує проглянути весь список. 
+
+
+[^BMLR]: На жаль, якість та підтримуваність їх дуже відрізняється. Наприклад, з мого досвіду, uBLAS краще не використовувати. 
+
+До теми цього тексту безпосереднє відношення має [Math Toolkit](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/overview.html). Це бібліотека з багатьма засобами, в межах нашої теми цікаві: [допомога з float128 типами](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/cstdfloat.html) та ["Floating Point Utilities"](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/utils.html)? зокрема:
+
+- [Функції заокруглення та обрізання](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/math_toolkit/rounding.html).
+- [Порівняння floating point чисел](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/math_toolkit/float_comparison.html).
+- ["Sign Manipulation Functions"](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/math_toolkit/sign_functions.html).
+- [Послідовний та взаємо-узгоджений ввід-вивід безмежностей та NaN](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/math_toolkit/fp_facets/facets_intro.html).
+- ["Floating-Point Representation Distance (ULP), and Finding Adjacent Floating-Point Values"](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/math_toolkit/next_float.html).
+- ["Condition Numbers"](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/math_toolkit/cond.html) -- оцінка чутливості функції до похибок заокруглення.
+- ["ULPs Plots"](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/math_toolkit/ulps_plots.html) -- візуалізація точності реалізації floating point функцій. 
 
 
 # FP8
@@ -1511,5 +1826,6 @@ Extended, and Quadruple Precision by Vincenzo Innocente and Paul Zimmermann, 202
     - [Додатково про VAX-формат -- дискусія](https://groups.google.com/g/comp.sys.dec/c/61hlTFaD7qA/m/xFK-hJ88SToJ);
     - dідповідь ["Floating Point numbers on VAX machine"](https://stackoverflow.com/a/71698171) на stackoverflow;
     - ["VAX FLOATING POINT: A Solid Foundation For Numerical Computation"](https://dl.acm.org/doi/pdf/10.1145/641845.641849) by Mary Payne and Dileep Bhandarkar, 1980.
+- [soft-ieee754](https://github.com/LiraNuna/soft-ieee754) -- бібліотека підтримки FP-чисел довільного розміру та довільним зсувом. 
 
 # Виноски
