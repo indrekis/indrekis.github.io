@@ -1380,7 +1380,7 @@ MSVC взагалі має трохи нюансів. Наприклад, цит
 int gsl_fcmp(double x, double y, double epsilon);
 ```
 
-Ця функція перевіряє, чи x та y рівні в межах відносної похибки epsilon. Інтервал обирає як: \[ x - y < \pm 2^k \cdot \mathrm {epsilon}, \] де k -- більша з експонент x та y.
+Ця функція перевіряє, чи x та y рівні в межах відносної похибки epsilon. Інтервал обирає як: \[ |x - y| <  2^k \cdot \mathrm {epsilon}, \] де k -- більша з експонент x та y.
 
 Подробиці див. документацію: ["IEEE floating-point arithmetic"](https://www.gnu.org/software/gsl/doc/html/ieee754.html) та ["Approximate Comparison of Floating Point Numbers"](https://www.gnu.org/software/gsl/doc/html/math.html#approximate-comparison-of-floating-point-numbers).
 
