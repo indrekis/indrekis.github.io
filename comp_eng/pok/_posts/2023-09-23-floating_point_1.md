@@ -41,11 +41,15 @@ excerpt_separator: <!--more-->
   - [CUDA]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#cuda)
   - [Програмне керування -- високорівневе]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#програмне-керування--високорівневе)
     - [Стандартні засоби C та C++]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#стандартні-засоби-c-та-c)
+      - [Керування заокругленням]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#керування-заокругленням)
+      - [Інше]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#інше)     
     - [POSIX]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#posix)
     - [Нестандартні засоби -- MSVC]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#нестандартні-засоби--msvc)
     - [GCC -ffast-math]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#gcc--ffast-math)
     - [Clang -ffast-math]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#clang--ffast-math)
     - [MSVC -- /fp:fast аналог, -ffast-math]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#msvc--fpfast-аналог--ffast-math)
+    - [Засоби GSL -- GNU Scientific Library]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#засоби-gsl--gnu-scientific-library)
+    - [Засоби Boost]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#засоби-boost) 
 - [FP8]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#fp8)
   - [Опис]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#опис)
   - [Вправи]({% post_url /comp_eng/pok/2023-09-23-floating_point_1 %}#вправи)
@@ -1387,7 +1391,7 @@ int gsl_fcmp(double x, double y, double epsilon);
 
 [^BMLR]: На жаль, якість та підтримуваність їх дуже відрізняється. Наприклад, з мого досвіду, uBLAS краще не використовувати. 
 
-До теми цього тексту безпосереднє відношення має [Math Toolkit](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/overview.html). Це бібліотека з багатьма засобами, в межах нашої теми цікаві: [допомога з float128 типами](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/cstdfloat.html) та ["Floating Point Utilities"](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/utils.html)? зокрема:
+До теми цього тексту безпосереднє відношення має [Math Toolkit](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/overview.html). Це бібліотека з багатьма засобами, в межах нашої теми цікаві: [допомога з float128 типами](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/cstdfloat.html) та ["Floating Point Utilities"](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/utils.html), зокрема:
 
 - [Функції заокруглення та обрізання](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/math_toolkit/rounding.html).
 - [Порівняння floating point чисел](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/math_toolkit/float_comparison.html).
@@ -1395,7 +1399,7 @@ int gsl_fcmp(double x, double y, double epsilon);
 - [Послідовний та взаємо-узгоджений ввід-вивід безмежностей та NaN](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/math_toolkit/fp_facets/facets_intro.html).
 - ["Floating-Point Representation Distance (ULP), and Finding Adjacent Floating-Point Values"](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/math_toolkit/next_float.html).
 - ["Condition Numbers"](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/math_toolkit/cond.html) -- оцінка чутливості функції до похибок заокруглення.
-- ["ULPs Plots"](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/math_toolkit/ulps_plots.html) -- візуалізація точності реалізації floating point функцій. 
+  - ["ULPs Plots"](https://www.boost.org/doc/libs/1_84_0/libs/math/doc/html/math_toolkit/ulps_plots.html) -- візуалізація точності реалізації floating point функцій. 
 
 
 # FP8
