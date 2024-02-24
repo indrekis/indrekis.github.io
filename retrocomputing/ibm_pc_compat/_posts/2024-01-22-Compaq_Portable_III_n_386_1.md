@@ -1194,6 +1194,7 @@ Word чи Excel працюють добре, а ось софт презента
 - [Q89014: Video Problems with the Compaq Portable III/Portable 386](https://jeffpar.github.io/kbarchive/kb/089/Q89014/) -- на тему, що або вбудований CGA, або MDA + зовнішня відеокарта потрібні.
 - [CGA Display Driver for Windows for Workgroups 3.11](https://archive.org/details/wfw311_cga)
 - [Compaq Portable III / "Super CGA" graphics mode](https://forums.bannister.org/ubbthreads.php?ubb=showflat&Number=111341)
+- [Сучасна заміна RTC з батарейкою](https://www.tindie.com/products/weird/compaq-portable-iii-battery-module/)
 
 
 
