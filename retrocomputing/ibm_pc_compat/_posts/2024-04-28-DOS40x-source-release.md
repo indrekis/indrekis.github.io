@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "До релізу джерельних текстів DOS 4.0x та матеріалів European DOS 4"
-date:   2024-06-22 1:23:45 +0300
+date:   2024-06-25 1:23:45 +0300
 tags: [retrocomputing, IBM PC та сумісні, DOS]
 # categories: [retrocomputing, IBM-PC-compat]
 comments: true
@@ -129,6 +129,7 @@ D:\v4.0> cpy.bat
 Перша проблема з компіляцією -- коли код заливали на GitHub, використовуючи налаштування за замовчуванням, були зламані символи кінця рядка. І, якщо, скажімо, MASM справлявся і з Unix-варіантом, \n, то ``nosrvbld.exe`` та ``exe2bin`` мають проблеми. Також, DOS 3.31 та 4.01 (і, думаю, старіші), потребують \n\r і в .BAT-файлах. 
 
 > Щоб заборонити Git і надалі ламати символи кінця рядків, додав такий .gitattributes, користуючись [цією підказкою](https://stackoverflow.com/questions/21822650/disable-git-eol-conversions)[^BBTF]:
+
 ```text
 # Do not change ENDL handling:
 #* text=false
