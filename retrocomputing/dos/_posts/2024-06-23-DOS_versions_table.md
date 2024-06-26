@@ -147,12 +147,12 @@ PC DOS:
 
 - Форматує і 32 Мб, але теж не вміє з нього завантажитися. 
 
-| ![](/retrocomputing/ibm_pc_compat/pics/DOSTable/MS-DOS-3.20-fdisk01.png) |
+| ![](/retrocomputing/dos/pics/DOSTable/MS-DOS-3.20-fdisk01.png) |
 | :-------------: |
 | Створення диску, MS DOS 3.20. |
-| ![](/retrocomputing/ibm_pc_compat/pics/DOSTable/MS-DOS-3.20-format01.png) |
+| ![](/retrocomputing/dos/pics/DOSTable/MS-DOS-3.20-format01.png) |
 | Форматування диску на 32 Мб, MS DOS 3.20 -- видно повідомлення про помилку.  |
-| ![](/retrocomputing/ibm_pc_compat/pics/DOSTable/PC-DOS-3.20-format01.png) |
+| ![](/retrocomputing/dos/pics/DOSTable/PC-DOS-3.20-format01.png) |
 | Форматування диску на 32 Мб, PC DOS 3.20.  |
 
 # Виноски
