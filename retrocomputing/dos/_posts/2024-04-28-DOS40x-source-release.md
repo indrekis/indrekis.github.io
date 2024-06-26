@@ -11,21 +11,21 @@ excerpt_separator: <!--more-->
 
 
 
-- [Огляд]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#огляд)
-  - [Вміст]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#вміст)
-  - [Огляд DOS 4.00]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#огляд-dos-400)
-  - [Огляд Multitasking DOS 4]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#огляд-multitasking-dos-4)
-- [Компіляція DOS 4.0x]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#компіляція-dos-40x)
-  - [Оригінальний код]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#оригінальний-код)
-  - [Виправивши деякі баги]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#виправивши-деякі-баги)
-  - [SYS.COM]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#syscom)
-- [Компіляція Multitasking (European) MS DOS 4.0]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#компіляція-multitasking-european-ms-dos-40)
-  - [Цікавинки]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#цікавинки)
-  - [cpmio.asm]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#cpmioasm)
-  - [Інтеграл]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#інтеграл)
-- [Підсумок]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#підсумок)
-- [Посилання]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#посилання)
-- [Виноски]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}#виноски)
+- [Огляд]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#огляд)
+  - [Вміст]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#вміст)
+  - [Огляд DOS 4.00]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#огляд-dos-400)
+  - [Огляд Multitasking DOS 4]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#огляд-multitasking-dos-4)
+- [Компіляція DOS 4.0x]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#компіляція-dos-40x)
+  - [Оригінальний код]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#оригінальний-код)
+  - [Виправивши деякі баги]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#виправивши-деякі-баги)
+  - [SYS.COM]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#syscom)
+- [Компіляція Multitasking (European) MS DOS 4.0]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#компіляція-multitasking-european-ms-dos-40)
+  - [Цікавинки]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#цікавинки)
+  - [cpmio.asm]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#cpmioasm)
+  - [Інтеграл]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#інтеграл)
+- [Підсумок]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#підсумок)
+- [Посилання]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#посилання)
+- [Виноски]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#виноски)
 
 
 Два місяці тому[^A26] Microsoft відкрила (майже) повні джерельні тексти [MS DOS 4.00](https://github.com/microsoft/MS-DOS/tree/main/v4.0) та частину славнозвісно загадкового [Multitasking чи European MS DOS 4.0](https://github.com/microsoft/MS-DOS/tree/main/v4.0-ozzie)[^MTD4], приблизно еквівалентну OEM Adaptation Kit (OAK)[^OAK1]. Звичайно, я зразу захотів спробувати скомпілювати та подивитися, що там із [SYS.COM](https://indrekis.github.io/tags/#sys-com). Але, хоча, з підказками спільноти, це вдалося швидко, через звичну безліч справ з студентами і взагалі в УКУ, описати свої знахідки тоді не вдавалося і пишу, вкотре, безнадійно відставши від першовідкривачів. 

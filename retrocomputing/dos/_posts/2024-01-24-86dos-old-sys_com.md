@@ -9,7 +9,7 @@ published: true
 excerpt_separator: <!--more-->
 ---
 
-Насправді, ця стаття -- трішки обман. Все почалося з того, що до [86-DOS]({% post_url /retrocomputing/ibm_pc_compat/2024-01-23-86dos-old-1 %}) я поліз, щоб глянути на їх SYS.COM, який багато раз дизасемблював для різних версій MS/PC-DOS. 
+Насправді, ця стаття -- трішки обман. Все почалося з того, що до [86-DOS]({% post_url /retrocomputing/dos/2024-01-23-86dos-old-1 %}) я поліз, щоб глянути на їх SYS.COM, який багато раз дизасемблював для різних версій MS/PC-DOS. 
 
 <style>body {text-align: justify}</style>
 

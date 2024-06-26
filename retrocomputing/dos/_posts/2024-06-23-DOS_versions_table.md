@@ -10,23 +10,23 @@ excerpt_separator: <!--more-->
 ---
 
 
-- [Таблиця]({% post_url /retrocomputing/ibm_pc_compat/2024-06-23-DOS_versions_table %}#таблиця)
-- [Джерела]({% post_url /retrocomputing/ibm_pc_compat/2024-06-23-DOS_versions_table %}#джерела)
-  - [Версії та їх дати]({% post_url /retrocomputing/ibm_pc_compat/2024-06-23-DOS_versions_table %}#версії-та-їх-дати)
-  - [Підтримка носіїв]({% post_url /retrocomputing/ibm_pc_compat/2024-06-23-DOS_versions_table %}#підтримка-носіїв)
-  - [Потреба в пам'яті]({% post_url /retrocomputing/ibm_pc_compat/2024-06-23-DOS_versions_table %}#потреба-в-памяті)
-- [Джерело образів]({% post_url /retrocomputing/ibm_pc_compat/2024-06-23-DOS_versions_table %}#джерело-образів)
-  - [Winworldpc]({% post_url /retrocomputing/ibm_pc_compat/2024-06-23-DOS_versions_table %}#winworldpc)
-  - [PCjs]({% post_url /retrocomputing/ibm_pc_compat/2024-06-23-DOS_versions_table %}#pcjs)
-  - [Betaarchive]({% post_url /retrocomputing/ibm_pc_compat/2024-06-23-DOS_versions_table %}#betaarchive)
-  - [Old-dos]({% post_url /retrocomputing/ibm_pc_compat/2024-06-23-DOS_versions_table %}#old-dos)
-  - [Інші]({% post_url /retrocomputing/ibm_pc_compat/2024-06-23-DOS_versions_table %}#інші)
-- [Експерименти]({% post_url /retrocomputing/ibm_pc_compat/2024-06-23-DOS_versions_table %}#експерименти)
-  - [MS DOS та PC DOS 3.20]({% post_url /retrocomputing/ibm_pc_compat/2024-06-23-DOS_versions_table %}#ms-dos-та-pc-dos-320)
-- [Виноски]({% post_url /retrocomputing/ibm_pc_compat/2024-06-23-DOS_versions_table %}#виноски)
+- [Таблиця]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#таблиця)
+- [Джерела]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#джерела)
+  - [Версії та їх дати]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#версії-та-їх-дати)
+  - [Підтримка носіїв]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#підтримка-носіїв)
+  - [Потреба в пам'яті]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#потреба-в-памяті)
+- [Джерело образів]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#джерело-образів)
+  - [Winworldpc]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#winworldpc)
+  - [PCjs]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#pcjs)
+  - [Betaarchive]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#betaarchive)
+  - [Old-dos]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#old-dos)
+  - [Інші]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#інші)
+- [Експерименти]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#експерименти)
+  - [MS DOS та PC DOS 3.20]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#ms-dos-та-pc-dos-320)
+- [Виноски]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#виноски)
 
 
-Поки писав про [DOS 4.00]({% post_url /retrocomputing/ibm_pc_compat/2024-04-28-DOS40x-source-release %}), [Tandy 1400LT]({% post_url /retrocomputing/ibm_pc_compat/2023-11-18-tandy_1400LT_1 %}) тощо, регулярно мусив уточнювати всілякі подробиці щодо можливостей різних версій DOS. При чому, в різних джерелах є різнобій. То вирішив зібрати все в одному місці і потроху уточнювати. 
+Поки писав про [DOS 4.00]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}), [Tandy 1400LT]({% post_url /retrocomputing/ibm_pc_compat/2023-11-18-tandy_1400LT_1 %}) тощо, регулярно мусив уточнювати всілякі подробиці щодо можливостей різних версій DOS. При чому, в різних джерелах є різнобій. То вирішив зібрати все в одному місці і потроху уточнювати. 
 
 <style>body {text-align: justify}</style>
 
