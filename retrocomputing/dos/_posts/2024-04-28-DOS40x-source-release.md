@@ -142,7 +142,7 @@ D:\v4.0> cpy.bat
 
 Друга -- якесь перекодування однобайтових символів у трьохбайтові UTF-8. Це призвело, окрім пошкодження різних частин текстів та коментарів, до таких помилок:
 
-![](/retrocomputing/ibm_pc_compat/pics/DOS400/dos40src-error1.png) 
+![](/retrocomputing/dos/pics/DOS400/dos40src-error1.png) 
 
 Третя проблема, яка проявляла себе дещо містично. Дати файлів втрачені -- це історична проблема. Але воно ж буде проблемою для nmake. Якщо дата в DOS-системі старіша -- то кожен раз буде повна перекомпіляція, яка (див. далі) часто не працює. Також, хоча ретельно не досліджував[^SPER] -- може це взагалі була випадковість, за такої пізньої (2024!), з точки зору утиліт 1988-го року дати, іноді вони загадково аварійно закінчуються.
 
@@ -165,7 +165,7 @@ find ./ \( -type f -iname '*.SKL' -o -iname '*.ASM' -o -iname '*.C' -o -iname '*
 
 Виправити дати на старіші[^FXD], під сучасними ОС, тривіально, хоча під DOSBox ніби й не потрібно. Та й, тільки поредагуєш, доводиться знову. А ось з-під DOS це складніше. Допоміг DN -- Dos Navigator. Все ж, він дуже просунутий був на свій час. 
 
-| ![](/retrocomputing/ibm_pc_compat/pics/DOS400/dn_change_Dates.png) |
+| ![](/retrocomputing/dos/pics/DOS400/dn_change_Dates.png) |
 | :-------------: |
 | Змінюємо оптом дату файлів. Спочатку пошуком виводимо файли на панель (як в Total Commander), потім використовуємо пункт меню ``File/File Attributes...``. Щоправда, для директорій воно змінювати дату не вміє, але це й не потрібно. |
 
@@ -195,13 +195,13 @@ find ./ \( -type f -iname '*.SKL' -o -iname '*.ASM' -o -iname '*.C' -o -iname '*
 
 Ситуація з випробуваними версіями DOS, однак, цікава -- актуальні на момент розробки версії не можуть просто так, за один захід, скомпілювати цю версію DOS... Цікаво, як викручувалися розробники? 
 
-| ![](/retrocomputing/ibm_pc_compat/pics/DOS400/error248_331.png) |
+| ![](/retrocomputing/dos/pics/DOS400/error248_331.png) |
 | :-------------: |
 | Падіння компіляції на select9.asm, під час використання DOS 3.31. Відтворюється. |
-| ![](/retrocomputing/ibm_pc_compat/pics/DOS400/error248_622_f3.png) |
+| ![](/retrocomputing/dos/pics/DOS400/error248_622_f3.png) |
 | А ось так паде, коли з датами наплутано, наприклад, коли системна дата -- 1980 рік. |
 
-| ![](/retrocomputing/ibm_pc_compat/pics/DOS400/error248_331_f2.png) |
+| ![](/retrocomputing/dos/pics/DOS400/error248_331_f2.png) |
 | :-------------: |
 | Так виглядає успішне завершення компіляції. |
 
@@ -214,7 +214,7 @@ find ./ \( -type f -iname '*.SKL' -o -iname '*.ASM' -o -iname '*.C' -o -iname '*
 
 IO.SYS та MSDOS.SYS важливо записувати на щойно відформатовану дискету саме в такому порядку. 
 
-| ![](/retrocomputing/ibm_pc_compat/pics/DOS400/dos400_custom.png) |
+| ![](/retrocomputing/dos/pics/DOS400/dos400_custom.png) |
 | :-------------: |
 | Для наочності, трішки змінив надпис (в COMMAND.CLB -- зміна USA-MS.MSG не вплинула на результат, певне треба якось перегенеровувати) Так виглядає успішне завершення компіляції. |
 
@@ -248,7 +248,7 @@ Mystacks	dw	128 dup (0)
 Основна причина -- ''зображення'', як на картинці та детальна документація перед кожною функцією:
 
 
-| ![](/retrocomputing/ibm_pc_compat/pics/DOS400/sys400_1.png) |
+| ![](/retrocomputing/dos/pics/DOS400/sys400_1.png) |
 | :-------------: |
 | ASCII-Art своєрідний. |
 
@@ -452,11 +452,11 @@ D:\v4.0-ozzie\bin\DISK2\BIOS> nmake -f BIOSOBJ.MAK ibmbio.com
 
 Отриманий ibmbio.com має доволі багато байт, відмінних від оригіналу, хоча розмір збігається, але вантажиться успішно, в тому числі, працює SM.EXE -- Session Manager, який і реалізовує багатозадачність.
 
-| ![](/retrocomputing/ibm_pc_compat/pics/DOS400/dos40_multitask_boot1.png) |
+| ![](/retrocomputing/dos/pics/DOS400/dos40_multitask_boot1.png) |
 | :-------------: |
 | Завантаження дуже ранньої версії багатозадачного DOS. А ось по ver представляється дуже скромно: ``MS-DOS Version  4.00``. Жорсткого диску (124 Мб) не бачить -- і добре...|
 
-| ![](/retrocomputing/ibm_pc_compat/pics/DOS400/dos40_multitask_sm1.png) |
+| ![](/retrocomputing/dos/pics/DOS400/dos40_multitask_sm1.png) |
 | :-------------: |
 | SM, під яким запущено дві копії command.com. Alt-F10 повертає до SM. Після виходу з SM іноді ігнорує першу команду чи щось таке, але ніби працює.|
 
@@ -490,7 +490,7 @@ Version_Fake_Table:			    ;AN007  starting address for special
 
 ## Інтеграл
 
-| ![](/retrocomputing/ibm_pc_compat/pics/DOS400/dos4_int.png) |
+| ![](/retrocomputing/dos/pics/DOS400/dos4_int.png) |
 | :-------------: |
 | Під час компіляції трапився такий інтегральчик. |
 
