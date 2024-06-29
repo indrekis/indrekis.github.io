@@ -23,8 +23,8 @@ excerpt_separator: <!--more-->
   - [Інші]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#інші)
 - [Експерименти]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#експерименти)
   - [MS DOS та PC DOS 3.20]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#ms-dos-та-pc-dos-320)
+  - [Multitasking DOS 4.00]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#multitasking-dos-400)
 - [Виноски]({% post_url /retrocomputing/dos/2024-06-23-DOS_versions_table %}#виноски)
-
 
 Поки писав про [DOS 4.00]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}), [Tandy 1400LT]({% post_url /retrocomputing/ibm_pc_compat/2023-11-18-tandy_1400LT_1 %}) тощо, регулярно мусив уточнювати всілякі подробиці щодо можливостей різних версій DOS. При чому, в різних джерелах є різнобій. То вирішив зібрати все в одному місці і потроху уточнювати. 
 
@@ -154,6 +154,10 @@ PC DOS:
 | Форматування диску на 32 Мб, MS DOS 3.20 -- видно повідомлення про помилку.  |
 | ![](/retrocomputing/dos/pics/DOSTable/PC-DOS-3.20-format01.png) |
 | Форматування диску на 32 Мб, PC DOS 3.20.  |
+
+## Multitasking DOS 4.00
+
+Згідно [''Who Knew What When''](http://www.os2museum.com/wp/who-knew-what-when/), сира версія, [джерельні тексти якої викладено на Git]({% post_url /retrocomputing/dos/2024-04-28-DOS40x-source-release %}#компіляція-multitasking-european-ms-dos-40), підтримує лише 5.25'' 360 Кб -- через захардкоджену швидкість передачі даних. 
 
 # Виноски
 
