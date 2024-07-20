@@ -1921,5 +1921,6 @@ Extended, and Quadruple Precision by Vincenzo Innocente and Paul Zimmermann, 202
 - [soft-ieee754](https://github.com/LiraNuna/soft-ieee754) -- бібліотека підтримки FP-чисел довільного розміру та довільним зсувом. 
 - ["How to make sure no floating point code is used"](https://mcuoneclipse.com/2024/03/13/how-to-make-sure-no-floating-point-code-is-used/) -- щодо embedded-систем.
 - ["Fuzzing floating point code"](https://rigtorp.se/fuzzing-floating-point-code/).
+- ["Herbie, the Numerical Compiler"](https://uwplse.org/2024/05/09/Herbie-Numerical-Compiler.html) -- проект, який автоматично покращує точність floating-point коду, відповідним чином переформульовуючи формули. Зараз рухається в сторну врахування особливостей платформ. 
 
 # Виноски
