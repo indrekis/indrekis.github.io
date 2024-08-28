@@ -128,7 +128,7 @@ excerpt_separator: <!--more-->
 
 Тестував на чотирьох машинах: 
 
-- XT-машині на базі Juko ST, 
+- XT-машині на базі [Juko ST]({% post_url /retrocomputing/ibm_pc_compat/2024-08-07-juko_xt_mb %}), 
   - Встановив 8087 -- жахливо гріється,
 - на своїй IBM PC 5150,
 - на [HT-12 286 + 287, 16 МГц](https://theretroweb.com/motherboards/s/unknown-ht-12-286), 
