@@ -1195,6 +1195,7 @@ Word чи Excel працюють добре, а ось софт презента
 - [CGA Display Driver for Windows for Workgroups 3.11](https://archive.org/details/wfw311_cga)
 - [Compaq Portable III / "Super CGA" graphics mode](https://forums.bannister.org/ubbthreads.php?ubb=showflat&Number=111341)
 - [Сучасна заміна RTC з батарейкою](https://www.tindie.com/products/weird/compaq-portable-iii-battery-module/)
+- [Compaq Computer Corporation, Part I](https://www.abortretry.fail/p/compaq-computer-corporation-part)
 
 
 
