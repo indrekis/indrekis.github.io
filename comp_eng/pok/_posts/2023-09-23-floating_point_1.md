@@ -240,6 +240,9 @@ $$r = (a - b) (a + b).$$
 
 > Ремарка: чи завжди $$r = (a - b) (a + b)$$ буде обчислюватися точніше, ніж $$r = a^2 - b^2$$? Взагалі кажучи, ні. Якщо одне із a чи b, багато більше за інше, друга формула дасть трохи точніший результат. Перевірити це можна, побудувавши аналогічну табличку. Однак, перша захищена від катастрофічної втрати точності, а друга -- ні. Тому, перша, в загальному випадку, є кращим варіантом. 
 
+> ''[Array ordering and naive summation](https://discourse.julialang.org/t/array-ordering-and-naive-summation/1929?u=simonbyrne)'' -- приклад, коли переставляння порядку підсумовування дозволяє отримати практично будь-який результат.
+> Але див., наприклад, [лема Штербенца (Sterbenz lemma)](https://en.wikipedia.org/wiki/Sterbenz_lemma)  та [Алгоритм Кехена (Kahan summation)](https://en.wikipedia.org/wiki/Kahan_summation_algorithm).
+
 
 # Комп'ютерні дробові числа 
 
@@ -488,13 +491,14 @@ s e...ee m...mm
 
 [^IET]: Перейменували, як пояснюють, для більшої однозначності і зрозумілості, але подробиці я вияснити не зміг. 
 
-
 # IEEE 754
 
 До початку 80-х, floating point типи представлялися різними архітектурами процесорів (ISA) різними способами, зазвичай -- несумісними між собою, хоч і дуже схожими. Це було проблемою, тому, після довгих дискусій між ключовими виробниками, в [1985](https://en.wikipedia.org/wiki/IEEE_754-1985) було прийнято IEEE Standard for Floating-Point Arithmetic (**[IEEE 754](https://en.wikipedia.org/wiki/IEEE_754)**), який оновлювався в 2008 та 2019.
 
 > Ремарка: стандартизація тривала з 1977, цікавою є жорстка дискусія між Intel i DEC -- останні не вірили в адекватність підходу із денормалізованими числами, зокрема, в можливість реалізувати їх ефективно. Інтел реалізував їх в своєму [8087](https://en.wikipedia.org/wiki/Intel_8087), але, природно, не хотіли ділитися таємницею -- як саме. Тому, взяли floating point плату [DEC VAX](https://en.wikipedia.org/wiki/VAX) із їх floating point арифметикою та замінили на плату, що реалізовувала IEEE-арифметику, залишаючись сумісною у всьому решта. Це допомогло. Спроба довести теоретичну дефективність такого підходу, зроблена DEC, теж дала протилежні результати, це добило опір. Джерела: ["IEEE 754: An Interview with William Kahan"](http://www.dr-chuck.com/dr-chuck/papers/columns/r3114.pdf) та [An Interview with the Old Man of Floating-Point](https://people.eecs.berkeley.edu/~wkahan/ieee754status/754story.html) -- спогади про нього, (це головний натхненник та розробник формату). 
->
+
+> Однак, робота з денормалізованими числами все ще, зазвичай, повільна. Детальніше див., наприклад, відповідь на запитання: [''Why are denormal floating-point values slower to handle?''](https://stackoverflow.com/a/54938328).
+
 
 Формат FP5, який ми розглядали вище, створений згідно принципів, визначених в IEEE 754. Стандарт визначає декілька базових двійкових форматів, формати для обміну інформацією, десяткові формати та розширені типи. Далі ми коротко розглянемо лише основні двійкові формати. 
 
@@ -1337,7 +1341,7 @@ _controlfp_s(&current_word, _DN_FLUSH, _MCW_DN);
 - ``-funsafe-math-optimizations`` -- може змінювати контрольні регістри під час запуску програми, включає:
   - ``-fno-signed-zeros`` --  ігнорує знак нуля, дозволяє оптимізувати операції виду 0.0*x чи 0.0+x. 
   - ``-fno-trapping-math`` -- компілює код, вважаючи, що не буде відбуватися floating point виключень,
-  - ``-fassociative-math`` -- дозволяє переставляти операції, може трохи змінювати результат, зокрема -- знак нуля,
+  - ``-fassociative-math`` -- дозволяє переставляти операції, може трохи змінювати результат, зокрема -- знак нуля, відкриваючи безліч оптимізацій та використання SIMD, але й може зламати деякі акуратні підходи до збільшення точності обчислень з рухомою крапкою, наприклад, [Алгоритм Кехена (Kahan summation)](https://en.wikipedia.org/wiki/Kahan_summation_algorithm),
   - ``-freciprocal-math`` -- дозволяє заміняти x/y на x*(1/y), оскільки, на багатьох платформах, 1/y можна обчислити швидше, ніж ділення, а також дозволяє мінімізувати кількість доволі затратних ділень -- якщо кілька чисел потрібно поділити на певну величину, з цим прапорцем, компілятор може обчислити її обернене значення та множити на нього. 
   - Сам по собі цей прапорець дозволяє матиматичні оптимізації, виду ``sqrt(x) * sqrt(x) = x``, ``exp(x) * exp(y)	= exp(x+y)`` тощо. 
 - ``-ffinite-math-only`` -- компілює, вважаючи, що аргументи та результати операцій не будуть безмежностями чи NaN, без цього навіть значення виразу ``x-x`` не дорівнює 0.0, з точки зору компілятора,
@@ -1352,6 +1356,25 @@ _controlfp_s(&current_word, _DN_FLUSH, _MCW_DN);
 З іншого боку, за замовчуванням, GCC використовує заокруглення до найближчого і не повідомляє навіть про signaling NaN. Ефект від цього можна побачити у табличці вище. Більш строгої відповідності стандарту можна досягнути опціями ``-frounding-math`` та ''-fsignaling-nans''.
 
 Детальніше див. [Optimizations enabled by -ffast-math](https://kristerw.github.io/2021/10/19/fast-math/), [Semantics of Floating Point Math in GCC](https://gcc.gnu.org/wiki/FloatingPointMath) та [Options That Control Optimization](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html).
+
+Також, GCC підтримує ввімкнення цього режиму [лише для окремих функцій](https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html) ([інший спосіб](https://gcc.gnu.org/onlinedocs/gcc/Function-Specific-Option-Pragmas.html)):
+
+```C++
+__attribute__((optimize("-ffast-math")))
+double mul2(double val) {
+    return val / 2;
+}
+```
+
+```C++
+#pragma GCC optimize("-ffast-math")
+
+double mul2(double val) {
+    return val / 2;
+}
+```
+
+> Застереження щодо використання цієї опції: ''[Beware of fast-math](https://simonbyrne.github.io/notes/fastmath/)''.  
 
 > Ремарка. Дуже хороша обчислювальна бібліотека, GSL  -- [GNU Scientific Library](https://www.gnu.org/software/gsl/), використовує тести, які чутливі до суворого дотримання стандарту IEEE 754 -- заради можливості використовувати її і в чутливих до точності та гарантій обчислень. Успішне проходження цих тестів потребує вимагати від компілятора суворо дотримуватися вимог стандарту. 
 > Її засоби керування floating point середовищем: ["Setting up your IEEE environment"](https://www.gnu.org/software/gsl/doc/html/ieee754.html#setting-up-your-ieee-environment).
@@ -1922,5 +1945,9 @@ Extended, and Quadruple Precision by Vincenzo Innocente and Paul Zimmermann, 202
 - ["How to make sure no floating point code is used"](https://mcuoneclipse.com/2024/03/13/how-to-make-sure-no-floating-point-code-is-used/) -- щодо embedded-систем.
 - ["Fuzzing floating point code"](https://rigtorp.se/fuzzing-floating-point-code/).
 - ["Herbie, the Numerical Compiler"](https://uwplse.org/2024/05/09/Herbie-Numerical-Compiler.html) -- проект, який автоматично покращує точність floating-point коду, відповідним чином переформульовуючи формули. Зараз рухається в сторну врахування особливостей платформ. 
+- [Алгоритм Кехена (Kahan summation)](https://en.wikipedia.org/wiki/Kahan_summation_algorithm),
+  - [лема Штербенца (Sterbenz lemma)](https://en.wikipedia.org/wiki/Sterbenz_lemma).
+  - [Array ordering and naive summation](https://discourse.julialang.org/t/array-ordering-and-naive-summation/1929?u=simonbyrne)'' -- приклад, коли переставляння порядку підсумовування дозволяє отримати практично будь-який результат. 
+- [''Why are denormal floating-point values slower to handle?''](https://stackoverflow.com/a/54938328)
 
 # Виноски
