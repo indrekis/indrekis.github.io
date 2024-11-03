@@ -188,8 +188,9 @@ All Charge Card від тієї ж ALL Computers. Це плата -- [MMU](https
 - [The Secret History of Microsoft Hardware](https://www.pcmag.com/news/the-secret-history-of-microsoft-hardware), зокрема -- описує Mach 10 Accelerator board для XT, із 8086 9.54MHz -- на фоні плат вище, не вражає, та Mach 20 із 8-MHz 80286 CPU і слотом для 80287, кажуть навіть OS/2 можна було з її допомогою на XT запускати. Огляд [Mach 10](https://books.google.com.ua/books?id=oDwEAAAAMBAJ&pg=PA63&dq=%22microsoft%22+%22windows%22&hl=uk&sa=X&ved=2ahUKEwiT8PSIkKH1AhWE66QKHZg1Cx0Q6AF6BAgDEAI#v=onepage&q=%22microsoft%22%20%22windows%22&f=false) від InfoWorld, 6 Oct. 1986, стор. 63-64.
 - "[Triton Turbo XT](http://www.mainbyte.com/ti99/hardware/triton_turbo/turbo.html)" -- дивний клон XT, який називався апдейтом для [TI-99](https://en.wikipedia.org/wiki/TI-99/4A), а фактично [використовував його як клавіатуру](https://dfarq.homeip.net/triton-turbo-xt/).
 - ["Accelerating your Tandy 1000s"](http://nerdlypleasures.blogspot.com/2022/12/accelerating-your-tandy-1000s.html) -- плати до [успішних](https://dfarq.homeip.net/ibm-pcjr-vs-tandy-1000/) [клонів](https://en.wikipedia.org/wiki/Tandy_1000) [PCjr](https://en.wikipedia.org/wiki/IBM_PCjr).
-   - "Tandy 3-in-1 expansion review for the 1000HX and EX"(https://dfarq.homeip.net/tandy-3-in-1-expansion-review-for-the-1000hx-and-ex/),
-   - "Tandy 1000 and 1000SX upgrades"(https://dfarq.homeip.net/tandy-1000-and-1000sx-upgrades/)
+  - "Tandy 3-in-1 expansion review for the 1000HX and EX"(https://dfarq.homeip.net/tandy-3-in-1-expansion-review-for-the-1000hx-and-ex/),
+  - "Tandy 1000 and 1000SX upgrades"(https://dfarq.homeip.net/tandy-1000-and-1000sx-upgrades/)
+- "[Intel's Inboard 386/PC](https://computeradsfromthepast.substack.com/p/intels-inboard-386pc)" -- рекламні матеріали.
 
 # Виноски
 
