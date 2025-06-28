@@ -11,6 +11,8 @@ excerpt_separator: <!--more-->
 
 > Цей текст взято з [поста в Facebook](https://www.facebook.com/indrekis/posts/pfbid0YJeAkyxYFw7vUsjrVVvMSTdKK2RjLSnqtgUt694trM9CkrNhdEwc8xpmivcZANsJl) з мінімальними змінами, тому дату поставив відповідну. 
 
+**Update 2025-06-10:** виглядає, що ось і все... ''[Measurement of the Positive Muon Anomalous Magnetic Moment to 127 ppb](https://arxiv.org/abs/2506.03069)'', ''[The anomalous magnetic moment of the muon in the Standard Model: an update](https://arxiv.org/abs/2505.21476)''.
+
 <style>body {text-align: justify}</style>
 
 <!--more-->
@@ -55,5 +57,6 @@ excerpt_separator: <!--more-->
 Метафора біологічна:
 
 ![](/popular/physics/pics/sci_raped_reporter.jpg)
+
 
 # Виноски
