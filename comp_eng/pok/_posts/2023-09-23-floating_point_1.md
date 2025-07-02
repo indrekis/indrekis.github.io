@@ -1957,5 +1957,6 @@ Extended, and Quadruple Precision by Vincenzo Innocente and Paul Zimmermann, 202
   - [лема Штербенца (Sterbenz lemma)](https://en.wikipedia.org/wiki/Sterbenz_lemma).
   - [Array ordering and naive summation](https://discourse.julialang.org/t/array-ordering-and-naive-summation/1929?u=simonbyrne)'' -- приклад, коли переставляння порядку підсумовування дозволяє отримати практично будь-який результат. 
 - [''Why are denormal floating-point values slower to handle?''](https://stackoverflow.com/a/54938328)
+- [''A calculator app? Anyone could make that''](https://chadnauseam.com/coding/random/calculator-app) -- цікавий есей про те, як зробити зручний і правильний калькулятор. Через особливості floating point і математичні властивості дійсних чисел, це нетривіально.
 
 # Виноски
