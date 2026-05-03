@@ -520,7 +520,7 @@ s e...ee m...mm
 | ![](/comp_eng/pok/pics/IEEE_754_Quadruple_Floating_Point_Format.png) |
 | [Binary128](https://en.wikipedia.org/wiki/Quadruple-precision_floating-point_format) -- quadruple precision, bias = 16383, FP128. Зображення з [вікі](https://en.wikipedia.org/wiki/File:IEEE_754_Quadruple_Floating_Point_Format.svg). |
 | ![](/comp_eng/pok/pics/IEEE754_Octuple_precision_format_visual_demonstration.png) |
-| [Binary128](https://en.wikipedia.org/wiki/Octuple-precision_floating-point_format) -- octuple precision, bias = 262143, FP256. Зображення з [вікі](https://en.wikipedia.org/wiki/File:Octuple_precision_visual_demonstration.svg). |
+| [Binary256](https://en.wikipedia.org/wiki/Octuple-precision_floating-point_format) -- octuple precision, bias = 262143, FP256. Зображення з [вікі](https://en.wikipedia.org/wiki/File:Octuple_precision_visual_demonstration.svg). |
 | ![](/comp_eng/pok/pics/X86_Extended_Floating_Point_Format.png) |
 | [Binary80](https://en.wikipedia.org/wiki/File:X86_Extended_Floating_Point_Format.svg) -- приклад extended precision формату, 80-бітовий формат співпроцесорів x87, bias = 16383 (**FP80**). Сам по собі не є частиною стандарту, але такі типи ним дозволяються. У явному вигляді зберігає одиницю перед десятковою крапкою. Зображення з [вікі](https://en.wikipedia.org/wiki/File:X86_Extended_Floating_Point_Format.svg). |
 
