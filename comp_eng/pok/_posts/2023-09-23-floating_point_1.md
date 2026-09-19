@@ -1961,5 +1961,6 @@ Extended, and Quadruple Precision by Vincenzo Innocente and Paul Zimmermann, 202
 - [''Dragonbox''](https://github.com/jk-jeon/dragonbox) -- реалізація швидкого нового (2018) алгоритму перетворення чисел у стрічку.
 - ''[The stack circuitry of the Intel 8087 floating point chip, reverse-engineered](https://www.righto.com/2025/12/8087-stack-circuitry.html)''.
 - ''[Floating-Point Error Handling in C++: What Actually Works](https://johnnysswlab.com/floating-point-error-handling-in-c-what-actually-works/)'' -- аналіз плюсів, мінусів та втрат продуктивності різних підходів.
+- ''[Bringing Correctly Rounded Math to Production with LLVM-libc](https://devblogs.microsoft.com/cppblog/bringing-correctly-rounded-math-to-production-with-llvm-libc/)'', 2026 -- стаття від Microsoft про стандартизацію трансцендентних функцій в реалізації libc, щоб їх результат не залежав від платформи.
 
 # Виноски
